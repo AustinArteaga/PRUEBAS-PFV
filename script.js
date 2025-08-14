@@ -1,18 +1,18 @@
 // Tabla tarifaria exacta según especificaciones
 const TARIFAS_EXACTAS = [
-  { desde: 50, hasta: 99, tarifa: 0.093, costoBase: 0 },
-  { desde: 100, hasta: 149, tarifa: 0.095, costoBase: 4.55 },
-  { desde: 150, hasta: 199, tarifa: 0.097, costoBase: 9.2 },
-  { desde: 200, hasta: 249, tarifa: 0.099, costoBase: 13.95 },
-  { desde: 250, hasta: 299, tarifa: 0.101, costoBase: 18.8 },
-  { desde: 300, hasta: 349, tarifa: 0.103, costoBase: 23.75 },
-  { desde: 350, hasta: 404, tarifa: 0.105, costoBase: 28.8 },
-  { desde: 405, hasta: 699, tarifa: 0.1285, costoBase: 39.73 },
-  { desde: 700, hasta: 999, tarifa: 0.145, costoBase: 77.63 },
-  { desde: 1000, hasta: 1499, tarifa: 0.1709, costoBase: 121.13 },
-  { desde: 1500, hasta: 1999, tarifa: 0.2752, costoBase: 206.58 },
-  { desde: 2000, hasta: 2499, tarifa: 0.436, costoBase: 344.18 },
-  { desde: 2500, hasta: 3500, tarifa: 0.6812, costoBase: 562.18 },
+  { desde: 50, hasta: 99, tarifa: 0.091, costoBase: 0 },
+  { desde: 100, hasta: 149, tarifa: 0.093, costoBase: 4.55 },
+  { desde: 150, hasta: 199, tarifa: 0.095, costoBase: 9.2 },
+  { desde: 200, hasta: 249, tarifa: 0.097, costoBase: 13.95 },
+  { desde: 250, hasta: 299, tarifa: 0.099, costoBase: 18.8 },
+  { desde: 300, hasta: 349, tarifa: 0.101, costoBase: 23.75 },
+  { desde: 350, hasta: 404, tarifa: 0.103, costoBase: 28.8 },
+  { desde: 405, hasta: 699, tarifa: 0.105, costoBase: 39.73 },
+  { desde: 700, hasta: 999, tarifa: 0.1285, costoBase: 77.63 },
+  { desde: 1000, hasta: 1499, tarifa: 0.145, costoBase: 121.13 },
+  { desde: 1500, hasta: 1999, tarifa: 0.1709, costoBase: 206.58 },
+  { desde: 2000, hasta: 2499, tarifa: 0.2752, costoBase: 344.18 },
+  { desde: 2500, hasta: 3500, tarifa: 0.436, costoBase: 562.18 },
   { desde: 3501, hasta: Number.POSITIVE_INFINITY, tarifa: 0.6812, costoBase: 1244.06 },
 ]
 
@@ -629,7 +629,7 @@ const systemsData = [
         type: "ON GRID",
         price: 18870.0,
         priceWithIVA: null,
-        panels: 48,
+        panels: 24,
         monthlySavings: 1800,
         annualSavings: 21600,
         produccionMensual: 2592, // 28.8 kWp * 1080 kWh/kWp/año / 12 meses = 2592 kWh/mes
@@ -647,7 +647,7 @@ const systemsData = [
         type: "ON GRID",
         price: 18870.0,
         priceWithIVA: null,
-        panels: 48,
+        panels: 24,
         monthlySavings: 1800,
         annualSavings: 21600,
         produccionMensual: 2592,
@@ -1109,13 +1109,23 @@ function configurarEventListeners() {
   // Event listeners para calculadora de respaldo
   document.getElementById("backupToggleBtn").addEventListener("click", (e) => {
     e.preventDefault()
-    document.getElementById("backupModal").style.display = "block"
-    buildBackupTable()
-    recalcBackup()
-  })
+    const dropdown = document.getElementById("backupDropdown")
+    const chevron = document.getElementById("backupChevron")
 
-  document.getElementById("closeBackupModal").addEventListener("click", () => {
-    document.getElementById("backupModal").style.display = "none"
+    if (dropdown.style.display === "none" || dropdown.style.display === "") {
+      dropdown.style.display = "block"
+      chevron.classList.add("rotated")
+      buildBackupTable()
+      recalcBackup()
+
+      // Scroll suave hacia la calculadora
+      setTimeout(() => {
+        dropdown.scrollIntoView({ behavior: "smooth", block: "start" })
+      }, 100)
+    } else {
+      dropdown.style.display = "none"
+      chevron.classList.remove("rotated")
+    }
   })
 
   document.getElementById("btnBackupClear").addEventListener("click", clearBackupCalculator)
@@ -1314,6 +1324,13 @@ function generarPDFSistema(sistema, datosCliente) {
   try {
     mostrarNotificacion("📄 Generando cotización PDF...", "info")
 
+    // Verificar que jsPDF esté disponible
+    if (typeof window.jspdf === "undefined") {
+      console.error("jsPDF no está cargado")
+      alert("Error: No se puede generar el PDF. Biblioteca no disponible.")
+      return
+    }
+
     const { jsPDF } = window.jspdf
     const doc = new jsPDF()
 
@@ -1374,187 +1391,203 @@ function generarPDFSistema(sistema, datosCliente) {
     const primaryColor = [255, 158, 26]
     const textColor = [55, 65, 81]
 
+    // 🎨 APLICAR AMBAS MARCAS DE AGUA PARA MEJOR EFECTO
+    agregarMarcaDeAguaPatron() // Patrón sutil de fondo
+    agregarMarcaDeAguaMejorada() // Marcas principales más visibles
+
     // HEADER DEL PDF
     doc.setFillColor(...primaryColor)
     doc.rect(0, 0, 210, 40, "F")
 
-    const logoImg = new Image()
-    logoImg.crossOrigin = "anonymous"
-    logoImg.onload = () => {
-      doc.addImage(logoImg, "PNG", 10, 5, 40, 20)
+    // MARRIOTT SOLUTIONS como título principal
+    doc.setTextColor(255, 255, 255)
+    doc.setFontSize(20)
+    doc.setFont("helvetica", "bold")
+    doc.text("MARRIOTT SOLUTIONS", 105, 15, { align: "center" })
 
-      // 🎨 APLICAR AMBAS MARCAS DE AGUA PARA MEJOR EFECTO
-      agregarMarcaDeAguaPatron() // Patrón sutil de fondo
-      agregarMarcaDeAguaMejorada() // Marcas principales más visibles
+    doc.setFontSize(14)
+    doc.setFont("helvetica", "normal")
+    doc.text("COTIZACIÓN SISTEMA SOLAR", 105, 25, { align: "center" })
 
-      // MARRIOTT SOLUTIONS como título principal
-      doc.setTextColor(255, 255, 255)
-      doc.setFontSize(20)
-      doc.setFont("helvetica", "bold")
-      doc.text("MARRIOTT SOLUTIONS", 60, 15)
+    doc.setFontSize(10)
+    doc.text(`Sistema: ${sistema.name}`, 105, 32, { align: "center" })
 
-      doc.setFontSize(14)
-      doc.setFont("helvetica", "normal")
-      doc.text("COTIZACIÓN SISTEMAS FOTOVOLTAICOS", 60, 25)
+    const fecha = new Date().toLocaleDateString("es-EC", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+    doc.text(`Fecha: ${fecha}`, 105, 37, { align: "center" })
 
-      doc.setFontSize(10)
-      doc.text(`Sistema: ${sistema.name}`, 60, 32)
+    let yPos = 55
 
-      const fecha = new Date().toLocaleDateString("es-EC", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-      doc.text(`Fecha: ${fecha}`, 60, 37)
+    // 📋 INFORMACIÓN DEL CLIENTE
+    doc.setTextColor(...textColor)
+    doc.setFontSize(16)
+    doc.setFont("helvetica", "bold")
+    doc.text("INFORMACIÓN DEL CLIENTE", 20, yPos)
 
-      continuarGeneracionPDF()
-    }
+    yPos += 10
+    doc.setFontSize(11)
+    doc.setFont("helvetica", "normal")
+    doc.text(`Nombre: ${datosCliente.nombre}`, 20, yPos)
+    doc.text(`Tipo: ${datosCliente.tipoCliente}`, 110, yPos)
 
-    logoImg.onerror = () => {
-      console.warn("No se pudo cargar el logo, continuando sin él")
-      // 🎨 APLICAR MARCAS DE AGUA INCLUSO SIN LOGO
-      agregarMarcaDeAguaPatron()
-      agregarMarcaDeAguaMejorada()
+    yPos += 7
+    doc.text(`Celular: ${datosCliente.celular}`, 20, yPos)
+    doc.text(`Ciudad: ${datosCliente.ciudad}`, 110, yPos)
 
-      // Si no hay logo, centrar el texto
-      doc.setTextColor(255, 255, 255)
-      doc.setFontSize(20)
-      doc.setFont("helvetica", "bold")
-      doc.text("MARRIOTT SOLUTIONS", 105, 15, { align: "center" })
-
-      doc.setFontSize(14)
-      doc.setFont("helvetica", "normal")
-      doc.text("COTIZACIÓN SISTEMA SOLAR", 105, 25, { align: "center" })
-
-      continuarGeneracionPDF()
-    }
-
-    logoImg.src = "https://images.grupomarriott.com/wp-content/uploads/2022/10/31083332/LOGO_SOLAR-1.png"
-
-    function continuarGeneracionPDF() {
-      let yPos = 55
-
-      // 📋 INFORMACIÓN DEL CLIENTE - SIN FONDO DE COLOR
-      doc.setTextColor(...textColor)
-      doc.setFontSize(16)
-      doc.setFont("helvetica", "bold")
-      doc.text("INFORMACIÓN DEL CLIENTE", 20, yPos)
-
-      yPos += 10
-      doc.setFontSize(11)
-      doc.setFont("helvetica", "normal")
-      doc.text(`Nombre: ${datosCliente.nombre}`, 20, yPos)
-      doc.text(`Tipo: ${datosCliente.tipoCliente}`, 110, yPos)
-
-      yPos += 7
-      doc.text(`Celular: ${datosCliente.celular}`, 20, yPos)
-      doc.text(`Ciudad: ${datosCliente.ciudad}`, 110, yPos)
-
-      yPos += 7
-      // Dividir email largo si es necesario
-      const emailText = `Email: ${datosCliente.email}`
-      if (emailText.length > 40) {
-        doc.text("Email:", 20, yPos)
-        doc.text(datosCliente.email, 20, yPos + 5)
-        yPos += 5
-      } else {
-        doc.text(emailText, 20, yPos)
-      }
-
-      // 🔧 SISTEMA COTIZADO - SIN FONDO DE COLOR
-      yPos += 20
-      doc.setFontSize(16)
-      doc.setFont("helvetica", "bold")
-      doc.setTextColor(...primaryColor)
-      doc.text("SISTEMA COTIZADO", 20, yPos + 5)
-
-      yPos += 15
-      doc.setFontSize(12)
-      doc.setTextColor(...textColor)
-
-      // Dividir descripción larga en múltiples líneas
-      const descripcion = sistema.description
-      const maxWidth = 170
-      const lines = doc.splitTextToSize(descripcion, maxWidth)
-
-      for (let i = 0; i < lines.length; i++) {
-        doc.text(lines[i], 20, yPos + i * 6)
-      }
-
-      yPos += lines.length * 6
+    yPos += 7
+    // Dividir email largo si es necesario
+    const emailText = `Email: ${datosCliente.email}`
+    if (emailText.length > 40) {
+      doc.text("Email:", 20, yPos)
+      doc.text(datosCliente.email, 20, yPos + 5)
       yPos += 5
-
-      doc.setFontSize(11)
-      doc.text(`Tipo: ${sistema.type}`, 20, yPos)
-
-      // 🔧 MODIFICACIÓN: Mostrar paneles o "No aplica" según el consumo
-      if (sistema.panels > 0) {
-        doc.text(`Paneles: ${sistema.panels} unidades`, 110, yPos)
-      } else if (datosCliente.consumo > 201) {
-        doc.text(`Paneles: No aplica`, 110, yPos)
-      }
-
-      yPos += 7
-
-      // 🔧 MODIFICACIÓN: Mostrar área o "No requiere" según paneles y consumo
-      if (sistema.panels > 0) {
-        doc.text(`Área requerida: ${calculateArea(sistema.panels).toFixed(1)} m²`, 20, yPos)
-      } else if (datosCliente.consumo > 201) {
-        doc.text(`Área requerida: No requiere`, 20, yPos)
-      }
-
-      if (sistema.roi) {
-        doc.text(`ROI: ${sistema.roi} años`, 110, yPos)
-      }
-
-      // 💰 PRECIOS - SIN FONDO DE COLOR
-      yPos += 25
-      doc.setFontSize(16)
-      doc.setFont("helvetica", "bold")
-      doc.setTextColor(...primaryColor)
-      doc.text("INVERSIÓN", 20, yPos + 5)
-
-      yPos += 15
-      doc.setFontSize(14)
-      doc.setTextColor(...textColor)
-      doc.text(`Precio: ${formatearMoneda(sistema.price)}`, 20, yPos)
-
-      if (sistema.priceWithIVA) {
-        yPos += 8
-        doc.text(`Precio + IVA: ${formatearMoneda(sistema.priceWithIVA)}`, 20, yPos)
-      }
-
-      // 🎯 BENEFICIOS - SIN FONDO DE COLOR
-      yPos += 25
-      doc.setFontSize(16)
-      doc.setFont("helvetica", "bold")
-      doc.setTextColor(...primaryColor)
-      doc.text("BENEFICIOS", 20, yPos + 5)
-
-      yPos += 15
-      doc.setFontSize(12)
-      doc.setTextColor(...textColor)
-
-      // Verificar si es sistema de emergencia o calcular ahorros FTV
-      if (sistema.type === "POWER STATION" || sistema.type === "OFF GRID") {
-        doc.text("✓ Sistema de respaldo energético", 20, yPos)
-        doc.text("✓ Energía limpia", 20, yPos + 6)
-      } else {
-        doc.text("✓ Ahorro en factura", 20, yPos)
-        doc.text(
-          `Ahorro mensual: ${formatearMoneda(calcularDatosFTV(sistema, datosCliente.consumo).ahorroMensualReal)}`,
-          20,
-          yPos + 6,
-        )
-        doc.text(
-          `Ahorro anual: ${formatearMoneda(calcularDatosFTV(sistema, datosCliente.consumo).ahorroAnualReal)}`,
-          20,
-          yPos + 12,
-        )
-      }
+    } else {
+      doc.text(emailText, 20, yPos)
     }
+
+    // 🔧 SISTEMA COTIZADO
+    yPos += 20
+    doc.setFontSize(16)
+    doc.setFont("helvetica", "bold")
+    doc.setTextColor(...primaryColor)
+    doc.text("SISTEMA COTIZADO", 20, yPos)
+
+    yPos += 15
+    doc.setFontSize(12)
+    doc.setTextColor(...textColor)
+
+    // Dividir descripción larga en múltiples líneas
+    const descripcion = sistema.description
+    const maxWidth = 170
+    const lines = doc.splitTextToSize(descripcion, maxWidth)
+
+    for (let i = 0; i < lines.length; i++) {
+      doc.text(lines[i], 20, yPos + i * 6)
+    }
+
+    yPos += lines.length * 6 + 5
+
+    doc.setFontSize(11)
+    doc.text(`Tipo: ${sistema.type}`, 20, yPos)
+
+    // Mostrar paneles o "No aplica" según el consumo
+    if (sistema.panels > 0) {
+      doc.text(`Paneles: ${sistema.panels} unidades`, 110, yPos)
+    } else if (datosCliente.consumo > 201) {
+      doc.text(`Paneles: No aplica`, 110, yPos)
+    }
+
+    yPos += 7
+
+    // Mostrar área o "No requiere" según paneles y consumo
+    if (sistema.panels > 0) {
+      doc.text(`Área requerida: ${calculateArea(sistema.panels).toFixed(1)} m²`, 20, yPos)
+    } else if (datosCliente.consumo > 201) {
+      doc.text(`Área requerida: No requiere`, 20, yPos)
+    }
+
+    if (sistema.roi) {
+      doc.text(`ROI: ${sistema.roi} años`, 110, yPos)
+    }
+
+    // 💰 PRECIOS
+    yPos += 25
+    doc.setFontSize(16)
+    doc.setFont("helvetica", "bold")
+    doc.setTextColor(...primaryColor)
+    doc.text("INVERSIÓN", 20, yPos)
+
+    yPos += 15
+    doc.setFontSize(14)
+    doc.setTextColor(...textColor)
+    doc.text(`Precio: ${formatearMoneda(sistema.price)}`, 20, yPos)
+
+    if (sistema.priceWithIVA) {
+      yPos += 8
+      doc.text(`Precio + IVA: ${formatearMoneda(sistema.priceWithIVA)}`, 20, yPos)
+    }
+
+    // 🎯 BENEFICIOS
+    yPos += 25
+    doc.setFontSize(16)
+    doc.setFont("helvetica", "bold")
+    doc.setTextColor(...primaryColor)
+    doc.text("BENEFICIOS", 20, yPos)
+
+    yPos += 15
+    doc.setFontSize(12)
+    doc.setTextColor(...textColor)
+
+    // Verificar si es sistema de emergencia o calcular ahorros FTV
+    if (sistema.type === "POWER STATION" || sistema.type === "OFF GRID") {
+      doc.text("✓ Sistema de respaldo energético", 20, yPos)
+      doc.text("✓ Energía limpia y renovable", 20, yPos + 6)
+      doc.text("✓ Independencia energética", 20, yPos + 12)
+    } else {
+      const datosFTV = calcularDatosFTV(sistema, datosCliente.consumo)
+      doc.text("✓ Ahorro en factura eléctrica", 20, yPos)
+      doc.text(`Ahorro mensual: ${formatearMoneda(datosFTV.ahorroMensualReal)}`, 20, yPos + 6)
+      doc.text(`Ahorro anual: ${formatearMoneda(datosFTV.ahorroAnualReal)}`, 20, yPos + 12)
+    }
+
+    // 📝 NOTA ADICIONAL - IGUAL AL OTRO SCRIPT
+    yPos += 25
+    doc.setFontSize(12)
+    doc.setTextColor(...textColor)
+    doc.setFont("helvetica", "normal")
+
+    // Mensaje de nota con las especificaciones del otro script
+    const mensajaNota =
+      "Notas:\n• La cantidad final de paneles será confirmada luego de un análisis gratuito realizado por nuestros expertos.\n• Las horas de respaldo estarán sujetas a la configuración de batería recomendada por nuestro equipo técnico.\n• El ahorro estimado dependerá de la correcta disposición y configuración del medidor bidireccional."
+
+    // Dividir el mensaje en líneas si es muy largo
+    const maxWidthNota = 170
+    const lineasNota = doc.splitTextToSize(mensajaNota, maxWidthNota)
+
+    // Mostrar cada línea del mensaje
+    for (let i = 0; i < lineasNota.length; i++) {
+      doc.text(lineasNota[i], 20, yPos + i * 6)
+    }
+
+    // Ajustar yPos según el número de líneas
+    yPos += lineasNota.length * 6
+
+    // 🎨 AGREGAR MARCA DE AGUA ADICIONAL EN LA PARTE INFERIOR
+    doc.saveGraphicsState()
+    doc.setGState(new doc.GState({ opacity: 0.1 }))
+    doc.setTextColor(150, 150, 150)
+    doc.setFontSize(60)
+    doc.setFont("helvetica", "bold")
+    doc.text("MARRIOTT", 105, 250, {
+      angle: -45 * (Math.PI / 180),
+      align: "center",
+    })
+    doc.restoreGraphicsState()
+
+    // 📞 FOOTER - IGUAL AL OTRO SCRIPT
+    yPos = 285
+    doc.setFillColor(...primaryColor)
+    doc.rect(0, yPos, 210, 17, "F")
+
+    doc.setTextColor(255, 255, 255)
+    doc.setFontSize(10)
+    doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 091 0905", 20, yPos + 10)
+
+    // Generar nombre del archivo
+    const nombreArchivo = `Cotizacion_${sistema.name.replace(/\s+/g, "_")}_${datosCliente.nombre.replace(/\s+/g, "_")}_${new Date().toISOString().split("T")[0]}.pdf`
+
+    // Descargar el PDF
+    doc.save(nombreArchivo)
+
+    console.log("✅ PDF generado exitosamente:", nombreArchivo)
+    mostrarNotificacion("📄 PDF generado exitosamente", "success")
   } catch (error) {
     console.error("❌ Error al generar PDF:", error)
+    alert("Error al generar el PDF. Por favor, intenta nuevamente.")
+    mostrarNotificacion("❌ Error al generar PDF", "error")
   }
 }
 
@@ -1942,3 +1975,38 @@ function ocultarErrores() {
 function formatearMoneda(cantidad) {
   return cantidad.toLocaleString("es-EC", { style: "currency", currency: "USD" })
 }
+
+// ========== MOBILE MENU FUNCTIONALITY ==========
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn")
+  const mobileMenu = document.getElementById("mobileMenu")
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active")
+      const icon = mobileMenuBtn.querySelector("i")
+      if (mobileMenu.classList.contains("active")) {
+        icon.className = "fas fa-times"
+      } else {
+        icon.className = "fas fa-bars"
+      }
+    })
+
+    const mobileLinks = mobileMenu.querySelectorAll("a")
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active")
+        const icon = mobileMenuBtn.querySelector("i")
+        icon.className = "fas fa-bars"
+      })
+    })
+
+    document.addEventListener("click", (e) => {
+      if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove("active")
+        const icon = mobileMenuBtn.querySelector("i")
+        icon.className = "fas fa-bars"
+      }
+    })
+  }
+})
