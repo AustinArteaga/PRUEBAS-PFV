@@ -1,19 +1,18 @@
-// Tabla tarifaria exacta según especificaciones
 const TARIFAS_EXACTAS = [
-  { desde: 50, hasta: 99, tarifa: 0.091, costoBase: 0 },
-  { desde: 100, hasta: 149, tarifa: 0.093, costoBase: 4.55 },
-  { desde: 150, hasta: 199, tarifa: 0.095, costoBase: 9.2 },
-  { desde: 200, hasta: 249, tarifa: 0.097, costoBase: 13.95 },
-  { desde: 250, hasta: 299, tarifa: 0.099, costoBase: 18.8 },
-  { desde: 300, hasta: 349, tarifa: 0.101, costoBase: 23.75 },
-  { desde: 350, hasta: 404, tarifa: 0.103, costoBase: 28.8 },
-  { desde: 405, hasta: 699, tarifa: 0.105, costoBase: 39.73 },
-  { desde: 700, hasta: 999, tarifa: 0.1285, costoBase: 77.63 },
-  { desde: 1000, hasta: 1499, tarifa: 0.145, costoBase: 121.13 },
-  { desde: 1500, hasta: 1999, tarifa: 0.1709, costoBase: 206.58 },
-  { desde: 2000, hasta: 2499, tarifa: 0.2752, costoBase: 344.18 },
-  { desde: 2500, hasta: 3500, tarifa: 0.436, costoBase: 562.18 },
-  { desde: 3501, hasta: Number.POSITIVE_INFINITY, tarifa: 0.6812, costoBase: 1244.06 },
+  { desde: 0, hasta: 50, tarifa: 0.0915, costoBase: 0 },
+  { desde: 51, hasta: 100, tarifa: 0.093, costoBase: 4.575 },
+  { desde: 101, hasta: 150, tarifa: 0.095, costoBase: 9.225 },
+  { desde: 151, hasta: 200, tarifa: 0.097, costoBase: 14.0 },
+  { desde: 201, hasta: 250, tarifa: 0.099, costoBase: 18.85 },
+  { desde: 251, hasta: 300, tarifa: 0.101, costoBase: 23.8 },
+  { desde: 301, hasta: 350, tarifa: 0.103, costoBase: 28.85 },
+  { desde: 351, hasta: 500, tarifa: 0.105, costoBase: 34.0 },
+  { desde: 501, hasta: 700, tarifa: 0.1285, costoBase: 49.75 },
+  { desde: 701, hasta: 1000, tarifa: 0.145, costoBase: 75.45 },
+  { desde: 1001, hasta: 1500, tarifa: 0.1709, costoBase: 118.95 },
+  { desde: 1501, hasta: 2500, tarifa: 0.2752, costoBase: 204.4 },
+  { desde: 2501, hasta: 3500, tarifa: 0.436, costoBase: 479.52 },
+  { desde: 3501, hasta: Number.POSITIVE_INFINITY, tarifa: 0.6812, costoBase: 915.52 },
 ]
 
 // 🏷️ DATOS DE SISTEMAS EXACTOS COMO EN EL TSX
@@ -25,7 +24,7 @@ const systemsData = [
         name: "Power Station 1000W",
         description: "Power Station 1000W",
         roi: null,
-        type: "POWER STATION",
+        type: "Sistema de Respaldo",
         price: 770.75,
         priceWithIVA: 886.36,
         panels: 0,
@@ -34,6 +33,7 @@ const systemsData = [
         // Nuevos campos para cálculo FTV
         produccionMensual: 0, // kWh que produce el sistema por mes
         produccionAnual: 0, // kWh que produce el sistema por año
+        img: "https://almacenesmarriott.com/wp-content/uploads/2023/12/O17004__2.jpg",
       },
     ],
   },
@@ -44,7 +44,7 @@ const systemsData = [
         name: "Power Station 1000W",
         description: "Power Station 1000W",
         roi: null,
-        type: "POWER STATION",
+        type: "Sistema de Respaldo",
         price: 770.75,
         priceWithIVA: 886.36,
         panels: 0,
@@ -52,6 +52,7 @@ const systemsData = [
         annualSavings: 0,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://almacenesmarriott.com/wp-content/uploads/2023/12/O17004__2.jpg",
       },
     ],
   },
@@ -62,7 +63,7 @@ const systemsData = [
         name: "Power Station 2400W",
         description: "Power Station 2400W",
         roi: null,
-        type: "POWER STATION",
+        type: "Sistema de Respaldo",
         price: 1250.0,
         priceWithIVA: 1437.5,
         panels: 0,
@@ -70,6 +71,7 @@ const systemsData = [
         annualSavings: 0,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://almacenesmarriott.com/wp-content/uploads/2025/07/P81026.jpg",
       },
     ],
   },
@@ -78,9 +80,9 @@ const systemsData = [
     systems: [
       {
         name: "BLUESUN 1KW",
-        description: "SISTEMA OFF GRID - INVERSOR 110VAC 1KW + 2 BATERIA LITIO LIFEPO4 1.33KWH",
+        description: "INVERSOR 110VAC 1KW + 2 BATERIA LITIO LIFEPO4 1.33KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 1329.0,
         priceWithIVA: null,
         panels: 2,
@@ -88,6 +90,7 @@ const systemsData = [
         annualSavings: 960,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/pvgBW8Fz/1kw.jpg",
       },
     ],
   },
@@ -96,29 +99,31 @@ const systemsData = [
     systems: [
       {
         name: "BLUESUN 3KW",
-        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
+        description: "INVERSOR SPLIT PHASE 3KW + BATERIA LITIO LIFEPO4 5.12KWH",
         roi: null,
-        type: "OFF GRID",
-        price: 2589.0,
-        priceWithIVA: null,
-        panels: 4,
-        monthlySavings: 150,
-        annualSavings: 1800,
-        produccionMensual: 0,
-        produccionAnual: 0,
-      },
-      {
-        name: "SOSEN 5K",
-        description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
-        roi: null,
-        type: "OFF GRID",
-        price: 2589.0,
+        type: "Sistema de Ahorro + Respaldo",
+        price: 2899.0,
         priceWithIVA: null,
         panels: 6,
         monthlySavings: 180,
         annualSavings: 2160,
-        produccionMensual: 0,
-        produccionAnual: 0,
+        produccionMensual: 200,
+        produccionAnual: 2400,
+        img: "https://i.ibb.co/RTXG2Nvb/SISTEMA-OFF-GRID-INVERSOR-SPLIT-PHASE-3-KW-PV-INPUT-2880-W-1-BATERIA-LIFEPO4-LITIO-5-12-KWH.png",
+      },
+      {
+        name: "BLUESUN 5KW",
+        description: "INVERSOR SPLIT PHASE 5KW + BATERIA LITIO LIFEPO4 10.24KWH",
+        roi: null,
+        type: "Sistema de Ahorro + Respaldo",
+        price: 4299.0,
+        priceWithIVA: null,
+        panels: 10,
+        monthlySavings: 280,
+        annualSavings: 3360,
+        produccionMensual: 350,
+        produccionAnual: 4200,
+        img: "https://i.ibb.co/7xQF7j9k/SISTEMA-OFF-GRID-INVERSOR-SINGLE-PHASE-5-KW-PV-INPUT-5000-W-1-BATERIA-LITIO-LIFEPO4-5-KWH.png",
       },
     ],
   },
@@ -127,9 +132,9 @@ const systemsData = [
     systems: [
       {
         name: "BLUESUN 3KW",
-        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
+        description: "INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 2589.0,
         priceWithIVA: null,
         panels: 4,
@@ -137,12 +142,13 @@ const systemsData = [
         annualSavings: 1800,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/RTXG2Nvb/SISTEMA-OFF-GRID-INVERSOR-SPLIT-PHASE-3-KW-PV-INPUT-2880-W-1-BATERIA-LIFEPO4-LITIO-5-12-KWH.png",
       },
       {
         name: "AIO 6KW - 10 kWh",
-        description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
+        description: "INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 3949.0,
         priceWithIVA: null,
         panels: 8,
@@ -150,12 +156,13 @@ const systemsData = [
         annualSavings: 2640,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/8gM6Fjd6/SISTEMA-ALL-IN-ONE-INVERSOR-SPLIT-PHASE-6-KW-PV-INPUT-3000-W-C-BATERIA-LITIO-LIFEPO4-10-KWH.png",
       },
       {
         name: "SOSEN 5K",
-        description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
+        description: "INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -163,6 +170,7 @@ const systemsData = [
         annualSavings: 2160,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/7xQF7j9k/SISTEMA-OFF-GRID-INVERSOR-SINGLE-PHASE-5-KW-PV-INPUT-5000-W-1-BATERIA-LITIO-LIFEPO4-5-KWH.png",
       },
     ],
   },
@@ -171,9 +179,9 @@ const systemsData = [
     systems: [
       {
         name: "BLUESUN 5KW",
-        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
+        description: "INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 10.85KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 3989.0,
         priceWithIVA: null,
         panels: 6,
@@ -181,12 +189,13 @@ const systemsData = [
         annualSavings: 3000,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/7dwpcP9V/SISTEMA-OFF-GRID-INVERSOR-SPLIT-PHASE-5-KW-PV-INPUT-2880-W-1-BATERIA-LITIO-LIFEPO4-10-85-KWH.png",
       },
       {
         name: "AIO 6KW - 10 kWh",
-        description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
+        description: "INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 3949.0,
         priceWithIVA: null,
         panels: 8,
@@ -194,12 +203,13 @@ const systemsData = [
         annualSavings: 2640,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/8gM6Fjd6/SISTEMA-ALL-IN-ONE-INVERSOR-SPLIT-PHASE-6-KW-PV-INPUT-3000-W-C-BATERIA-LITIO-LIFEPO4-10-KWH.png",
       },
       {
         name: "SOSEN 5K",
-        description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
+        description: "INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -207,6 +217,7 @@ const systemsData = [
         annualSavings: 2160,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/7xQF7j9k/SISTEMA-OFF-GRID-INVERSOR-SINGLE-PHASE-5-KW-PV-INPUT-5000-W-1-BATERIA-LITIO-LIFEPO4-5-KWH.png",
       },
     ],
   },
@@ -215,9 +226,9 @@ const systemsData = [
     systems: [
       {
         name: "BLUESUN 5KW",
-        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
+        description: "INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 10.85KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 3989.0,
         priceWithIVA: null,
         panels: 6,
@@ -225,12 +236,13 @@ const systemsData = [
         annualSavings: 3000,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/7dwpcP9V/SISTEMA-OFF-GRID-INVERSOR-SPLIT-PHASE-5-KW-PV-INPUT-2880-W-1-BATERIA-LITIO-LIFEPO4-10-85-KWH.png",
       },
       {
         name: "AIO 6KW - 15 kWh",
-        description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
+        description: "INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 4949.0,
         priceWithIVA: null,
         panels: 10,
@@ -238,12 +250,13 @@ const systemsData = [
         annualSavings: 3360,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/0pMcLHH1/SISTEMA-ALL-IN-ONE-INVERSOR-SPLIT-PHASE-6-KW-PV-INPUT-3000-W-C-BATERIA-LITIO-LIFEPO4-15-KW.png",
       },
       {
         name: "SOSEN 5K",
-        description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
+        description: "INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -251,6 +264,7 @@ const systemsData = [
         annualSavings: 2160,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/7xQF7j9k/SISTEMA-OFF-GRID-INVERSOR-SINGLE-PHASE-5-KW-PV-INPUT-5000-W-1-BATERIA-LITIO-LIFEPO4-5-KWH.png",
       },
     ],
   },
@@ -259,23 +273,24 @@ const systemsData = [
     systems: [
       {
         name: "ON GRID 3KW + 6 PANELES",
-        description: "SISTEMA ON GRID - INVERSOR SINGLE PHASE 3KW + SISTEMA 6 PANELES SOLARES",
-        roi: "5.5",
-        type: "ON GRID",
+        description: "INVERSOR SINGLE PHASE 3KW + SISTEMA 6 PANELES SOLARES",
+        roi: 5.5,
+        type: "Sistema de ahorro energetico",
         price: 3050.0,
         priceWithIVA: null,
         panels: 6,
         monthlySavings: 320,
         annualSavings: 3840,
-        produccionMensual: 324, // 3.9 kWp * 1080 kWh/kWp/año / 12 meses = 324 kWh/mes
-        produccionAnual: 3888, // 3.6 kWp * 1080 kWh/kWp/año = 3888 kWh/año
+        produccionMensual: 344.5, // Producción mensual corregida según Excel
+        produccionAnual: 4134, // 344.5 * 12 = 4134 kWh/año
+        img: "https://i.ibb.co/Hp1Km2yv/INVERSOR-ONGRID-3-KW.png",
       },
       {
         name: "BLUESUN 5KW + 4 PANELES",
         description:
-          "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES",
+          "INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 4839.0,
         priceWithIVA: null,
         panels: 4,
@@ -283,12 +298,13 @@ const systemsData = [
         annualSavings: 4200,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/7dwpcP9V/SISTEMA-OFF-GRID-INVERSOR-SPLIT-PHASE-5-KW-PV-INPUT-2880-W-1-BATERIA-LITIO-LIFEPO4-10-85-KWH.png",
       },
       {
         name: "AIO 6KW - 15 kWh",
-        description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
+        description: "INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 4949.0,
         priceWithIVA: null,
         panels: 0,
@@ -296,6 +312,7 @@ const systemsData = [
         annualSavings: 3360,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/0pMcLHH1/SISTEMA-ALL-IN-ONE-INVERSOR-SPLIT-PHASE-6-KW-PV-INPUT-3000-W-C-BATERIA-LITIO-LIFEPO4-15-KW.png",
       },
     ],
   },
@@ -304,9 +321,9 @@ const systemsData = [
     systems: [
       {
         name: "ON GRID 5KW + 10 PANELES",
-        description: "SISTEMA ON GRID - INVERSOR SINGLE PHASE 5KW + SISTEMA 10 PANELES SOLARES",
-        roi: "4.5",
-        type: "ON GRID",
+        description: "INVERSOR SINGLE PHASE 5KW + SISTEMA 10 PANELES SOLARES",
+        roi: 4.5,
+        type: "Sistema de ahorro energetico",
         price: 4653.0,
         priceWithIVA: null,
         panels: 10,
@@ -314,13 +331,14 @@ const systemsData = [
         annualSavings: 5400,
         produccionMensual: 540, // 6.5 kWp * 1080 kWh/kWp/año / 12 meses = 540 kWh/mes
         produccionAnual: 6480, // 6.0 kWp * 1080 kWh/kWp/año = 6480 kWh/año
+        img: "https://i.ibb.co/gFQXWCrT/INVERSOR-ONGRID-5-KW.png",
       },
       {
         name: "BLUESUN 5KW + 4 PANELES",
         description:
-          "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES SOLARES",
+          "INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES SOLARES",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 4839.0,
         priceWithIVA: null,
         panels: 4,
@@ -328,12 +346,13 @@ const systemsData = [
         annualSavings: 4200,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/7dwpcP9V/SISTEMA-OFF-GRID-INVERSOR-SPLIT-PHASE-5-KW-PV-INPUT-2880-W-1-BATERIA-LITIO-LIFEPO4-10-85-KWH.png",
       },
       {
         name: "AIO 6KW - 15 kWh",
-        description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
+        description: "INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 4949.0,
         priceWithIVA: null,
         panels: 0,
@@ -341,6 +360,7 @@ const systemsData = [
         annualSavings: 3360,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/0pMcLHH1/SISTEMA-ALL-IN-ONE-INVERSOR-SPLIT-PHASE-6-KW-PV-INPUT-3000-W-C-BATERIA-LITIO-LIFEPO4-15-KW.png",
       },
     ],
   },
@@ -349,36 +369,38 @@ const systemsData = [
     systems: [
       {
         name: "ON GRID 5KW + 10 PANELES",
-        description: "SISTEMA ON GRID - INVERSOR SINGLE PHASE 5KW + SISTEMA 10 PANELES SOLARES",
-        roi: "4",
-        type: "ON GRID",
+        description: "INVERSOR SINGLE PHASE 5KW + SISTEMA 10 PANELES SOLARES",
+        roi: 4,
+        type: "Sistema de ahorro energetico",
         price: 4653.0,
         priceWithIVA: null,
         panels: 10,
         monthlySavings: 450,
         annualSavings: 5400,
-        produccionMensual: 540,
-        produccionAnual: 6480,
+        produccionMensual: 495,
+        produccionAnual: 5940,
+        img: "https://i.ibb.co/gFQXWCrT/INVERSOR-ONGRID-5-KW.png",
       },
       {
-        name: "SOSEN 10 KW+ 10 PANELES",
+        name: "SOSEN 10 KW+ 20 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 10KW (PV INPUT 15000W) + 1 BATERIA LITIO LIFEPO4 10KWH + SISTEMA DE 10 PANELES",
-        roi: "8.3",
-        type: "HIBRIDO",
-        price: 9549.0,
+          "INVERSOR SPLIT PHASE 10KW (PV INPUT 15000W) + 1 BATERIA LITIO LIFEPO4 10KWH + SISTEMA DE 20 PANELES",
+        roi: 5.8,
+        type: "Sistema de Ahorro + Respaldo",
+        price: 11769.0,
         priceWithIVA: null,
-        panels: 10,
+        panels: 20,
         monthlySavings: 520,
         annualSavings: 6240,
-        produccionMensual: 540,
-        produccionAnual: 6480,
+        produccionMensual: 990,
+        produccionAnual: 11880,
+        img: "https://i.ibb.co/KxhZ8TT5/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-10-KW-PV-INPUT-15000-W-1-BATERIA-LITIO-LIFEPO4-10-KWH.png",
       },
       {
         name: "AIO 6KW - 15 kWh",
-        description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
+        description: "INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "Sistema de Respaldo",
         price: 4949.0,
         priceWithIVA: null,
         panels: 0,
@@ -386,6 +408,7 @@ const systemsData = [
         annualSavings: 6960,
         produccionMensual: 0,
         produccionAnual: 0,
+        img: "https://i.ibb.co/0pMcLHH1/SISTEMA-ALL-IN-ONE-INVERSOR-SPLIT-PHASE-6-KW-PV-INPUT-3000-W-C-BATERIA-LITIO-LIFEPO4-15-KW.png",
       },
     ],
   },
@@ -394,9 +417,9 @@ const systemsData = [
     systems: [
       {
         name: "ON GRID 5KW + 10 PANELES",
-        description: "SISTEMA ON GRID - INVERSOR SINGLE PHASE 5KW + SISTEMA 10 PANELES SOLARES",
-        roi: "3",
-        type: "ON GRID",
+        description: "INVERSOR SINGLE PHASE 5KW + SISTEMA 10 PANELES SOLARES",
+        roi: 3,
+        type: "Sistema de ahorro energetico",
         price: 4653.0,
         priceWithIVA: null,
         panels: 10,
@@ -404,13 +427,14 @@ const systemsData = [
         annualSavings: 5400,
         produccionMensual: 540,
         produccionAnual: 6480,
+        img: "https://i.ibb.co/gFQXWCrT/INVERSOR-ONGRID-5-KW.png",
       },
       {
         name: "SOSEN 10 KW + 15 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 10KW (PV INPUT 15000W) + 1 BATERIA LITIO LIFEPO4 10KWH + SISTEMA DE 15 PANELES SOLARES",
-        roi: "5",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 10KW (PV INPUT 15000W) + 1 BATERIA LITIO LIFEPO4 10KWH + SISTEMA DE 15 PANELES SOLARES",
+        roi: 5,
+        type: "Sistema de Ahorro + Respaldo",
         price: 10524.0,
         priceWithIVA: null,
         panels: 15,
@@ -418,20 +442,22 @@ const systemsData = [
         annualSavings: 7800,
         produccionMensual: 810, // 9.0 kWp * 1080 kWh/kWp/año / 12 meses = 810 kWh/mes
         produccionAnual: 9720, // 9.0 kWp * 1080 kWh/kWp/año = 9720 kWh/año
+        img: "https://i.ibb.co/KxhZ8TT5/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-10-KW-PV-INPUT-15000-W-1-BATERIA-LITIO-LIFEPO4-10-KWH.png",
       },
       {
         name: "SOSEN FOX 11KW + 15 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 15 PANELES SOLARES",
-        roi: "6.5",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 15 PANELES SOLARES",
+        roi: 6.5,
+        type: "Sistema de Ahorro + Respaldo",
         price: 13824.0,
         priceWithIVA: null,
         panels: 15,
         monthlySavings: 720,
         annualSavings: 8640,
-        produccionMensual: 810,
-        produccionAnual: 9720,
+        produccionMensual: 920, // Mayor producción debido a mayor capacidad del inversor
+        produccionAnual: 11040, // 920 * 12 meses
+        img: "https://i.ibb.co/XkZdFr02/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-11-4-KW-PV-INPUT-17000-W-2-BATERIAS-LITIO-LIFEPO4-11-KWH.png",
       },
     ],
   },
@@ -440,44 +466,47 @@ const systemsData = [
     systems: [
       {
         name: "ON GRID 10KW + 20 PANELES",
-        description: "SISTEMA ON GRID - INVERSOR SINGLE PHASE 10KW + SISTEMA 20 PANELES SOLARES",
-        roi: "3",
-        type: "ON GRID",
+        description: "INVERSOR SINGLE PHASE 10KW + SISTEMA 20 PANELES SOLARES",
+        roi: 3,
+        type: "Sistema de ahorro energetico",
         price: 8775.0,
         priceWithIVA: null,
         panels: 20,
         monthlySavings: 850,
         annualSavings: 10200,
-        produccionMensual: 1080, // 12.0 kWp * 1080 kWh/kWp/año / 12 meses = 1080 kWh/mes
+        produccionMensual: 1080, // 12.0 kWp * 90 kWh/kWp/mes = 1080 kWh/mes
         produccionAnual: 12960, // 12.0 kWp * 1080 kWh/kWp/año = 12960 kWh/año
+        img: "https://i.ibb.co/p6zzb4t8/INVERSOR-ONGRID-10-KW.png",
       },
       {
         name: "SOSEN FOX 11KW  + 20 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 20 PANELES SOLARES",
-        roi: "5.2",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 20 PANELES SOLARES",
+        roi: 5.2,
+        type: "Sistema de Ahorro + Respaldo",
         price: 14949.0,
         priceWithIVA: null,
         panels: 20,
         monthlySavings: 920,
         annualSavings: 11040,
-        produccionMensual: 1080,
-        produccionAnual: 12960,
+        produccionMensual: 1230, // Mayor producción debido a mayor capacidad del inversor
+        produccionAnual: 14760, // 1230 * 12 meses
+        img: "https://i.ibb.co/XkZdFr02/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-11-4-KW-PV-INPUT-17000-W-2-BATERIAS-LITIO-LIFEPO4-11-KWH.png",
       },
       {
         name: "SOSEN 15 KW + 20 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 20 PANELES SOLARES",
-        roi: "5",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 20 PANELES SOLARES",
+        roi: 5,
+        type: "Sistema de Ahorro + Respaldo",
         price: 14449.0,
         priceWithIVA: null,
         panels: 20,
         monthlySavings: 920,
         annualSavings: 11040,
-        produccionMensual: 1080,
-        produccionAnual: 12960,
+        produccionMensual: 1350, // Mayor producción debido a mayor capacidad del inversor
+        produccionAnual: 16200, // 1350 * 12 meses
+        img: "https://i.ibb.co/fGY2LRwd/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-15-KW-PV-INPUT-22500-W-1-BATERIA-LITIO-LIFEPO4-15-KWH.png",
       },
     ],
   },
@@ -486,9 +515,9 @@ const systemsData = [
     systems: [
       {
         name: "ON GRID 10KW + 20 PANELES",
-        description: "SISTEMA ON GRID - INVERSOR SINGLE PHASE 10KW + SISTEMA 20 PANELES SOLARES",
-        roi: "2.8",
-        type: "ON GRID",
+        description: "INVERSOR SINGLE PHASE 10KW + SISTEMA 20 PANELES SOLARES",
+        roi: 2.8,
+        type: "Sistema de ahorro energetico",
         price: 8775.0,
         priceWithIVA: null,
         panels: 20,
@@ -496,34 +525,37 @@ const systemsData = [
         annualSavings: 10200,
         produccionMensual: 1080,
         produccionAnual: 12960,
+        img: "https://i.ibb.co/p6zzb4t8/INVERSOR-ONGRID-10-KW.png",
       },
       {
         name: "SOSEN FOX 11KW  + 20 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 20 PANELES SOLARES",
-        roi: "4.7",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 20 PANELES SOLARES",
+        roi: 4.7,
+        type: "Sistema de Ahorro + Respaldo",
         price: 14949.0,
         priceWithIVA: null,
         panels: 20,
         monthlySavings: 850,
         annualSavings: 10200,
-        produccionMensual: 1080,
-        produccionAnual: 12960,
+        produccionMensual: 1230,
+        produccionAnual: 14760,
+        img: "https://i.ibb.co/XkZdFr02/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-11-4-KW-PV-INPUT-17000-W-2-BATERIAS-LITIO-LIFEPO4-11-KWH.XkZdFr02/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-11-4-KW-PV-INPUT-17000-W-2-BATERIAS-LITIO-LIFEPO4-11-KWH.png",
       },
       {
         name: "SOSEN 15 KW + 20 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 20 PANELES SOLARES",
-        roi: "4.5",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 20 PANELES SOLARES",
+        roi: 4,
+        type: "Sistema de Ahorro + Respaldo",
         price: 14449.0,
         priceWithIVA: null,
         panels: 20,
         monthlySavings: 920,
         annualSavings: 11040,
-        produccionMensual: 1080,
-        produccionAnual: 12960,
+        produccionMensual: 1350,
+        produccionAnual: 16200,
+        img: "https://i.ibb.co/fGY2LRwd/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-15-KW-PV-INPUT-22500-W-1-BATERIA-LITIO-LIFEPO4-15-KWH.png",
       },
     ],
   },
@@ -532,9 +564,9 @@ const systemsData = [
     systems: [
       {
         name: "ON GRID 10KW + 20 PANELES",
-        description: "SISTEMA ON GRID - INVERSOR SINGLE PHASE 10KW + SISTEMA 20 PANELES SOLARES",
-        roi: "2.5",
-        type: "ON GRID",
+        description: "INVERSOR SINGLE PHASE 10KW + SISTEMA 20 PANELES SOLARES",
+        roi: 2.5,
+        type: "Sistema de ahorro energetico",
         price: 8775.0,
         priceWithIVA: null,
         panels: 20,
@@ -542,34 +574,37 @@ const systemsData = [
         annualSavings: 10200,
         produccionMensual: 1080,
         produccionAnual: 12960,
+        img: "https://i.ibb.co/p6zzb4t8/INVERSOR-ONGRID-10-KW.png",
       },
       {
         name: "SOSEN FOX 11KW  + 20 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 20 PANELES SOLARES",
-        roi: "4",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 20 PANELES SOLARES",
+        roi: 4,
+        type: "Sistema de Ahorro + Respaldo",
         price: 14949.0,
         priceWithIVA: null,
         panels: 20,
         monthlySavings: 850,
         annualSavings: 10200,
-        produccionMensual: 1080,
-        produccionAnual: 12960,
+        produccionMensual: 1230,
+        produccionAnual: 14760,
+        img: "https://i.ibb.co/XkZdFr02/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-11-4-KW-PV-INPUT-17000-W-2-BATERIAS-LITIO-LIFEPO4-11-KWH.png",
       },
       {
         name: "SOSEN 15 KW + 20 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 20 PANELES SOLARES",
-        roi: "4",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 20 PANELES SOLARES",
+        roi: 4,
+        type: "Sistema de Ahorro + Respaldo",
         price: 14449.0,
         priceWithIVA: null,
         panels: 20,
         monthlySavings: 920,
         annualSavings: 11040,
-        produccionMensual: 1080,
-        produccionAnual: 12960,
+        produccionMensual: 1350,
+        produccionAnual: 16200,
+        img: "https://i.ibb.co/fGY2LRwd/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-15-KW-PV-INPUT-22500-W-1-BATERIA-LITIO-LIFEPO4-15-KWH.png",
       },
     ],
   },
@@ -578,44 +613,47 @@ const systemsData = [
     systems: [
       {
         name: "ON GRID 10KW + 24 PANELES",
-        description: "SISTEMA ON GRID - INVERSOR SINGLE PHASE 10KW + SISTEMA 24 PANELES SOLARES",
-        roi: "2",
-        type: "ON GRID",
+        description: "INVERSOR SINGLE PHASE 10KW + SISTEMA 24 PANELES SOLARES",
+        roi: 2,
+        type: "Sistema de ahorro energetico",
         price: 9435.0,
         priceWithIVA: null,
         panels: 24,
         monthlySavings: 1050,
         annualSavings: 12600,
-        produccionMensual: 1296, // 14.4 kWp * 1080 kWh/kWp/año / 12 meses = 1296 kWh/mes
-        produccionAnual: 15552, // 14.4 kWp * 1080 kWh/kWp/año = 15552 kWh/año
+        produccionMensual: 990, // 2895 - 1905 = 990 kWh/mes según Excel
+        produccionAnual: 11880, // 990 * 12 = 11880 kWh/año
+        img: "https://i.ibb.co/p6zzb4t8/INVERSOR-ONGRID-10-KW.png",
       },
       {
         name: "SOSEN FOX 11KW  + 30 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 30 PANELES SOLARES",
-        roi: "2.7",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 30 PANELES SOLARES",
+        roi: 2.7,
+        type: "Sistema de Ahorro + Respaldo",
         price: 17199.0,
         priceWithIVA: null,
         panels: 30,
         monthlySavings: 1200,
         annualSavings: 14400,
-        produccionMensual: 1620, // 18.0 kWp * 1080 kWh/kWp/año / 12 meses = 1620 kWh/mes
-        produccionAnual: 19440, // 18.0 kWp * 1080 kWh/kWp/año = 19440 kWh/año
+        produccionMensual: 1129, // 2895 - 1766 = 1129 kWh/mes según Excel
+        produccionAnual: 13548, // 1129 * 12 = 13548 kWh/año
+        img: "https://i.ibb.co/XkZdFr02/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-11-4-KW-PV-INPUT-17000-W-2-BATERIAS-LITIO-LIFEPO4-11-KWH.png",
       },
       {
         name: "SOSEN 15 KW + 30 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 30 PANELES SOLARES",
-        roi: "2.6",
-        type: "HIBRIDO",
+          "INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 30 PANELES SOLARES",
+        roi: 2.6,
+        type: "Sistema de Ahorro + Respaldo",
         price: 16699.0,
         priceWithIVA: null,
         panels: 30,
         monthlySavings: 1200,
         annualSavings: 14400,
-        produccionMensual: 1620,
-        produccionAnual: 19440,
+        produccionMensual: 1485, // 2895 - 1410 = 1485 kWh/mes según Excel
+        produccionAnual: 17820, // 1485 * 12 = 17820 kWh/año
+        img: "https://i.ibb.co/fGY2LRwd/SISTEMA-HIBRIDO-INVERSOR-SPLIT-PHASE-15-KW-PV-INPUT-22500-W-1-BATERIA-LITIO-LIFEPO4-15-KWH.png",
       },
     ],
   },
@@ -624,9 +662,9 @@ const systemsData = [
     systems: [
       {
         name: "2 SISTEMAS (ON GRID 10KW + 24 PANELES)",
-        description: "SISTEMA ON GRID - 2 INVERSORES SINGLE PHASE 10KW + SISTEMA 48 PANELES SOLARES",
-        roi: "2",
-        type: "ON GRID",
+        description: "2 INVERSORES SINGLE PHASE 10KW + SISTEMA 48 PANELES SOLARES",
+        roi: 2,
+        type: "Sistema de ahorro energetico",
         price: 18870.0,
         priceWithIVA: null,
         panels: 24,
@@ -634,6 +672,7 @@ const systemsData = [
         annualSavings: 21600,
         produccionMensual: 2592, // 28.8 kWp * 1080 kWh/kWp/año / 12 meses = 2592 kWh/mes
         produccionAnual: 31104, // 28.8 kWp * 1080 kWh/kWp/año = 31104 kWh/año
+        img: "https://i.ibb.co/p6zzb4t8/INVERSOR-ONGRID-10-KW.png",
       },
     ],
   },
@@ -642,9 +681,9 @@ const systemsData = [
     systems: [
       {
         name: "2 SISTEMAS (ON GRID 10KW + 24 PANELES)",
-        description: "SISTEMA ON GRID - 2 INVERSORES SINGLE PHASE 10KW + SISTEMA 48 PANELES SOLARES",
-        roi: "1.6",
-        type: "ON GRID",
+        description: "2 INVERSORES SINGLE PHASE 10KW + SISTEMA 48 PANELES SOLARES",
+        roi: 1.6,
+        type: "Sistema de ahorro energetico",
         price: 18870.0,
         priceWithIVA: null,
         panels: 24,
@@ -652,14 +691,31 @@ const systemsData = [
         annualSavings: 21600,
         produccionMensual: 2592,
         produccionAnual: 31104,
+        img: "https://i.ibb.co/p6zzb4t8/INVERSOR-ONGRID-10-KW.png",
       },
     ],
   },
 ]
 
+function calcularROI(sistema, ahorroAnualReal) {
+  // Solo mostrar ROI para sistemas que generan ahorro económico
+  if (sistema.type === "Sistema de Respaldo" || ahorroAnualReal <= 0) {
+    return null // No aplica ROI para sistemas de respaldo puro
+  }
+
+  // Usar el ROI estático definido en el sistema
+  if (sistema.roi !== null && sistema.roi !== undefined) {
+    return sistema.roi // Usar el valor estático del sistema
+  }
+
+  // Fallback: calcular ROI si no está definido estáticamente
+  const roi = sistema.price / ahorroAnualReal
+  return Math.round(roi * 10) / 10 // Redondear a 1 decimal
+}
+
 // 🔧 DATOS PARA CALCULADORA DE RESPALDO
 const BACKUP_PRODUCTS = [
-  { name: "Luminarias 18 W", w: 18, fc: 0.6, start: 1, fcoinc: 0.6 },
+  { name: "Lamparas / Focos", w: 18, fc: 0.6, start: 1, fcoinc: 0.6 },
   { name: "Tomacorrientes uso general", w: 150, fc: 0.3, start: 1, fcoinc: 0 },
   { name: "Bomba de agua 2 HP INVERTER*", w: 1500, fc: 0.8, start: 2, fcoinc: 0.3 },
   { name: "Cámaras IP", w: 20, fc: 1.0, start: 1, fcoinc: 0 },
@@ -667,7 +723,13 @@ const BACKUP_PRODUCTS = [
   { name: "Laptop", w: 80, fc: 0.7, start: 1, fcoinc: 0 },
   { name: "Computador de escritorio", w: 250, fc: 1.0, start: 1, fcoinc: 0 },
   { name: "Air-Fryer", w: 1200, fc: 0.7, start: 1, fcoinc: 0.2 },
-  { name: 'Televisor 55"', w: 300, fc: 0.9, start: 1, fcoinc: 0.7 },
+  {
+    name: 'Televisor 55"',
+    w: 300,
+    fc: 0.9,
+    start: 1,
+    fcoinc: 0.7,
+  },
   { name: "Cocina de inducción", w: 6000, fc: 1.0, start: 1, fcoinc: 0.5 },
   { name: "Cafetera/Tostadora (resistivos)", w: 1200, fc: 1.0, start: 1, fcoinc: 0.1 },
   { name: "Microondas", w: 1500, fc: 1.0, start: 1, fcoinc: 0.1 },
@@ -685,77 +747,234 @@ const BACKUP_PRODUCTS = [
   { name: "AACC CENTRAL 60000 BTU*", w: 5454.55, fc: 0.7, start: 3, fcoinc: 0 },
 ]
 
+const BATT_STEPS = [1.33, 5.12, 10, 10.85, 11, 15, 20] // Added BATT_STEPS
 const BACKUP_KITS = [
-  {
-    name: "SISTEMA OFF GRID - INVERSOR 110VAC 1KW + 2 BATERIA LITIO LIFEPO4 1.33KWH",
-    inv_kW: 1,
-    min_kW: 0.01,
-    max_kW: 1,
-    batt_kWh: 2,
-  },
-  {
-    name: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
-    inv_kW: 3,
-    min_kW: 1.01,
-    max_kW: 3,
-    batt_kWh: 5,
-  },
-  {
-    name: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
-    inv_kW: 5,
-    min_kW: 3.01,
-    max_kW: 5,
-    batt_kWh: 5,
-  },
-  {
-    name: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
-    inv_kW: 5,
-    min_kW: 3.01,
-    max_kW: 5,
-    batt_kWh: 10,
-  },
-  {
-    name: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
-    inv_kW: 6,
-    min_kW: 5.01,
-    max_kW: 6,
-    batt_kWh: 10,
-  },
-  {
-    name: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
-    inv_kW: 6,
-    min_kW: 5.01,
-    max_kW: 6,
-    batt_kWh: 15,
-  },
-  {
-    name: "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) + 2 BATERIAS LITIO LIFEPO4 11KWH",
-    inv_kW: 11,
-    min_kW: 11.01,
-    max_kW: 14.3,
-    batt_kWh: 20,
-  },
-  {
-    name: "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 10KW (PV INPUT 15000W) + 1 BATERIA LITIO LIFEPO4 10KWH",
-    inv_kW: 10,
-    min_kW: 6.01,
-    max_kW: 11,
-    batt_kWh: 10,
-  },
-  {
-    name: "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH",
-    inv_kW: 15,
-    min_kW: 14.4,
-    max_kW: 16.5,
-    batt_kWh: 15,
-  },
-].sort((a, b) => a.inv_kW - b.inv_kW)
+  // Added BACKUP_KITS
+  { min_kW: 0.01, max_kW: 1, batt_kWh: 1.33 },
+  { min_kW: 1.01, max_kW: 3, batt_kWh: 5.12 },
+  { min_kW: 3.01, max_kW: 5, batt_kWh: 5 },
+  { min_kW: 3.01, max_kW: 5, batt_kWh: 10.85 },
+  { min_kW: 5.01, max_kW: 6, batt_kWh: 10 },
+  { min_kW: 5.01, max_kW: 6, batt_kWh: 15 },
+  { min_kW: 6.01, max_kW: 11, batt_kWh: 10 },
+  { min_kW: 11.01, max_kW: 14.3, batt_kWh: 11 },
+  { min_kW: 14.4, max_kW: 16.5, batt_kWh: 15 },
+]
 
-const BATT_STEPS = [2, 5, 10, 15, 20]
+// Helper functions for formatting
+function fW(watts) {
+  return Math.round(watts).toLocaleString() + " W"
+}
+function fKWh(kwh) {
+  return kwh.toFixed(2) + " kWh"
+}
 
-// 🔧 FUNCIONES PARA CALCULADORA DE RESPALDO
-const fW = (n) => Math.round(n).toLocaleString("es-EC")
-const fKWh = (n) => n.toLocaleString("es-EC", { maximumFractionDigits: 2 })
+const BACKUP_SYSTEMS_DATA = [
+  {
+    range: [0.01, 1],
+    systems: [
+      {
+        name: "SISTEMA OFF GRID 1KW",
+        description: "SISTEMA OFF GRID - INVERSOR 110VAC 1KW + 2 BATERIA LITIO LIFEPO4 1.33KWH",
+        type: "OFF GRID",
+        inv_kW: 1,
+        batt_kWh: 1.33,
+        maxBaterias: 2,
+        potenciaMaxima: 1,
+        potenciaMinima: 0.01,
+        price: null,
+        priceWithIVA: null,
+      },
+    ],
+  },
+  {
+    range: [1.01, 3],
+    systems: [
+      {
+        name: "SISTEMA OFF GRID 3KW",
+        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO",
+        type: "OFF GRID",
+        inv_kW: 3,
+        batt_kWh: 5.12,
+        maxBaterias: 5,
+        potenciaMaxima: 3,
+        potenciaMinima: 1.01,
+        price: null,
+        priceWithIVA: null,
+      },
+    ],
+  },
+  {
+    range: [3.01, 5],
+    systems: [
+      {
+        name: "SISTEMA OFF GRID 5KW SINGLE PHASE",
+        description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
+        type: "OFF GRID",
+        inv_kW: 5,
+        batt_kWh: 5,
+        maxBaterias: 5,
+        potenciaMaxima: 5,
+        potenciaMinima: 3.01,
+        price: null,
+        priceWithIVA: null,
+      },
+      {
+        name: "SISTEMA OFF GRID 5KW SPLIT PHASE",
+        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
+        type: "OFF GRID",
+        inv_kW: 5,
+        batt_kWh: 10.85,
+        maxBaterias: 10,
+        potenciaMaxima: 5,
+        potenciaMinima: 3.01,
+        price: null,
+        priceWithIVA: null,
+      },
+    ],
+  },
+  {
+    range: [5.01, 6],
+    systems: [
+      {
+        name: "SISTEMA ALL IN ONE 6KW - 10KWH",
+        description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
+        type: "ALL IN ONE",
+        inv_kW: 6,
+        batt_kWh: 10,
+        maxBaterias: 10,
+        potenciaMaxima: 6,
+        potenciaMinima: 5.01,
+        price: null,
+        priceWithIVA: null,
+      },
+      {
+        name: "SISTEMA ALL IN ONE 6KW - 15KWH",
+        description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
+        type: "ALL IN ONE",
+        inv_kW: 6,
+        batt_kWh: 15,
+        maxBaterias: 15,
+        potenciaMaxima: 6,
+        potenciaMinima: 5.01,
+        price: null,
+        priceWithIVA: null,
+      },
+    ],
+  },
+  {
+    range: [6.01, 11],
+    systems: [
+      {
+        name: "SISTEMA HIBRIDO 10KW",
+        description: "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 10KW (PV INPUT 15000W) + 1 BATERIA LITIO LIFEPO4 10KWH",
+        type: "HIBRIDO",
+        inv_kW: 10,
+        batt_kWh: 10,
+        maxBaterias: 10,
+        potenciaMaxima: 11,
+        potenciaMinima: 6.01,
+        price: null,
+        priceWithIVA: null,
+      },
+    ],
+  },
+  {
+    range: [11.01, 14.3],
+    systems: [
+      {
+        name: "SISTEMA HIBRIDO 11.4KW",
+        description: "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) + 2 BATERIAS LITIO LIFEPO4 11KWH",
+        type: "HIBRIDO",
+        inv_kW: 11.4,
+        batt_kWh: 11,
+        maxBaterias: 20,
+        potenciaMaxima: 14.3,
+        potenciaMinima: 11.01,
+        price: null,
+        priceWithIVA: null,
+      },
+    ],
+  },
+  {
+    range: [14.4, 16.5],
+    systems: [
+      {
+        name: "SISTEMA HIBRIDO 15KW",
+        description: "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH",
+        type: "HIBRIDO",
+        inv_kW: 15,
+        batt_kWh: 15,
+        maxBaterias: 15,
+        potenciaMaxima: 16.5,
+        potenciaMinima: 14.4,
+        price: null,
+        priceWithIVA: null,
+      },
+    ],
+  },
+]
+
+function getRecommendedBackupSystems(powerKW, energyKWh) {
+  const validSystems = []
+
+  for (const rangeData of BACKUP_SYSTEMS_DATA) {
+    // Check if power is within range
+    if (powerKW >= rangeData.range[0] && powerKW <= rangeData.range[1]) {
+      // Check each system in this range to see if energy is also compatible
+      for (const system of rangeData.systems) {
+        // Check if the system can handle the required energy
+        // The system should have enough battery capacity (batt_kWh) for the required energy
+        if (system.batt_kWh >= energyKWh) {
+          validSystems.push(system)
+        }
+      }
+    }
+  }
+
+  // If no systems found in the exact power range, look for next available systems
+  if (validSystems.length === 0) {
+    for (const rangeData of BACKUP_SYSTEMS_DATA) {
+      // Look for systems with higher power capacity that can handle the energy
+      if (rangeData.range[0] > powerKW) {
+        for (const system of rangeData.systems) {
+          if (system.batt_kWh >= energyKWh) {
+            validSystems.push(system)
+          }
+        }
+        if (validSystems.length > 0) break // Stop at first valid range found
+      }
+    }
+  }
+
+  return validSystems
+}
+
+function getBackupBadgeClass(tipo) {
+  switch (tipo) {
+    case "OFF GRID":
+      return "badge-off-grid"
+    case "Sistema de Ahorro + Respaldo":
+      return "badge-hibrido"
+    case "ALL IN ONE":
+      return "badge-all-in-one"
+    default:
+      return "badge-power-station"
+  }
+}
+
+function getBackupSystemIcon(tipo) {
+  switch (tipo) {
+    case "OFF GRID":
+      return '<i class="fas fa-bolt"></i>'
+    case "Sistema de Ahorro + Respaldo":
+      return '<i class="fas fa-sun"></i>'
+    case "ALL IN ONE":
+      return '<i class="fas fa-cogs"></i>'
+    default:
+      return '<i class="fas fa-tools"></i>'
+  }
+}
 
 function ceilStep(kwh) {
   for (const s of BATT_STEPS) {
@@ -769,104 +988,276 @@ function pickKit(pk, ek) {
   if (c.length) return c[0]
   c = BACKUP_KITS.filter((k) => pk <= k.max_kW && k.batt_kWh >= ek)
   if (c.length) return c[0]
-  return BACKUP_KITS[BACKUP_KITS.length - -1]
+  return BACKUP_KITS[BACKUP_KITS.length - 1]
 }
 
-function buildBackupTable() {
-  const tbody = document.getElementById("backupTbody")
-  tbody.innerHTML = ""
+let selectedEquipment = []
 
+function populateEquipmentDropdown() {
+  const select = document.getElementById("equipmentSelect")
+  select.innerHTML = '<option value="">-- Selecciona un equipo --</option>'
   BACKUP_PRODUCTS.forEach((product, index) => {
+    const option = document.createElement("option")
+    option.value = index
+    option.textContent = `${product.name} (${product.w}W)`
+    select.appendChild(option)
+  })
+}
+
+function addSelectedEquipment() {
+  const selectElement = document.getElementById("equipmentSelect")
+  const quantityElement = document.getElementById("equipmentQuantity")
+  const hoursElement = document.getElementById("equipmentHours")
+  const selectedIndex = selectElement.value
+  const quantity = Math.max(1, Number.parseFloat(quantityElement.value) || 1)
+  const hours = Math.max(0, Number.parseFloat(hoursElement.value) || 0)
+
+  if (selectedIndex === "") {
+    alert("Por favor selecciona un equipo")
+    return
+  }
+
+  const product = BACKUP_PRODUCTS[selectedIndex]
+  const equipmentId = `equipment_${Date.now()}_${selectedIndex}`
+
+  // Add to selected equipment array
+  selectedEquipment.push({
+    id: equipmentId,
+    productIndex: selectedIndex,
+    product: product,
+    quantity: quantity,
+    hours: hours,
+  })
+
+  // Reset form
+  selectElement.value = ""
+  quantityElement.value = "1"
+  hoursElement.value = "1"
+
+  // Rebuild table
+  buildSelectedEquipmentTable()
+  recalcBackup()
+}
+
+function removeSelectedEquipment(equipmentId) {
+  selectedEquipment = selectedEquipment.filter((eq) => eq.id !== equipmentId)
+  buildSelectedEquipmentTable()
+  recalcBackup()
+}
+
+function buildSelectedEquipmentTable() {
+  const tbody = document.getElementById("backupTbody")
+  if (selectedEquipment.length === 0) {
+    tbody.innerHTML = `
+      <tr id="noEquipmentRow">
+        <td colspan="7" class="text-center no-equipment-message">
+          <i class="fas fa-info-circle"></i>
+          No hay equipos agregados. Selecciona un equipo arriba para comenzar.
+        </td>
+      </tr>
+    `
+    return
+  }
+
+  tbody.innerHTML = ""
+  selectedEquipment.forEach((equipment) => {
     const tr = document.createElement("tr")
+    tr.className = "equipment-row"
     tr.innerHTML = `
       <td>
         <div class="backup-product-info">
-          <div class="backup-product-name">${product.name}</div>
+          <div class="backup-product-name">${equipment.product.name}</div>
           <div class="backup-product-details">
-            Coinc.: ${product.fcoinc} | FC: ${product.fc}${product.start > 1 ? ` | Arranque: x${product.start}` : ""}
+            Coinc.: ${equipment.product.fcoinc} | FC: ${equipment.product.fc}${equipment.product.start > 1 ? ` | Arranque: x${equipment.product.start}` : ""}
           </div>
         </div>
       </td>
-      <td class="text-right">${fW(product.w)}</td>
+      <td class="text-right">${fW(equipment.product.w)}</td>
       <td class="text-right">
-        <input type="number" min="0" step="1" value="0" class="backup-input backup-quantity" data-index="${index}">
+        <input type="number" min="1" step="1" value="${equipment.quantity}" class="backup-input backup-quantity" data-equipment-id="${equipment.id}">
       </td>
       <td class="text-right">
-        <input type="number" min="0" step="0.25" value="0" class="backup-input backup-hours" data-index="${index}">
+        <input type="number" min="0" step="0.25" value="${equipment.hours}" class="backup-input backup-hours" data-equipment-id="${equipment.id}">
       </td>
-      <td class="text-right backup-calculated-value backup-picos" data-index="${index}">0</td>
-      <td class="text-right backup-calculated-value backup-energia" data-index="${index}">0</td>
+      <td class="text-right backup-calculated-value backup-picos" data-equipment-id="${equipment.id}">0</td>
+      <td class="text-right backup-calculated-value backup-energia" data-equipment-id="${equipment.id}">0</td>
+      <td class="text-center">
+        <button class="btn-remove-equipment" onclick="removeSelectedEquipment('${equipment.id}')" title="Eliminar equipo">
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
     `
     tbody.appendChild(tr)
   })
 }
 
 function recalcBackup() {
+  console.log("[v0] Starting recalcBackup function")
+  console.log("[v0] selectedEquipment:", selectedEquipment)
+
+  // Update totals first
+  updateBackupTotals()
+
+  if (selectedEquipment.length === 0) {
+    console.log("[v0] No equipment selected, hiding results")
+    document.getElementById("backupRecommendedSection").style.display = "none"
+    return
+  }
+
   let totalPicos = 0
   let totalEnergia = 0
 
-  BACKUP_PRODUCTS.forEach((product, index) => {
-    const quantityInput = document.querySelector(`.backup-quantity[data-index="${index}"]`)
-    const hoursInput = document.querySelector(`.backup-hours[data-index="${index}"]`)
-    const picosCell = document.querySelector(`.backup-picos[data-index="${index}"]`)
-    const energiaCell = document.querySelector(`.backup-energia[data-index="${index}"]`)
+  selectedEquipment.forEach((equipment) => {
+    const potenciaTotal = equipment.quantity * equipment.product.w
+    const picos = potenciaTotal * equipment.product.fc
 
-    const quantity = Math.max(0, Number.parseFloat(quantityInput.value) || 0)
-    const hours = Math.max(0, Number.parseFloat(hoursInput.value) || 0)
-    const fcoinc = product.fcoinc ?? 0
+    let energia
+    if (equipment.product.fcoinc > 0) {
+      energia = (equipment.product.fcoinc * equipment.hours * picos) / 1000
+    } else {
+      energia = (equipment.hours * picos) / 1000
+    }
 
-    const PT = quantity * product.w
-    const PE = PT * product.fc
-    const P = product.start > 1 ? PT * product.start : PE
-    const E = (hours * PE * (fcoinc === 0 ? 1 : fcoinc)) / 1000
-
-    picosCell.textContent = fW(P)
-    energiaCell.textContent = fKWh(E)
-
-    totalPicos += P
-    totalEnergia += E
+    totalPicos += picos
+    totalEnergia += energia
+    console.log("[v0] Equipment:", equipment.product.name, "Picos:", picos, "Energia:", energia)
   })
 
-  document.getElementById("backupTotalPicos").textContent = fW(totalPicos)
-  document.getElementById("backupTotalEnergia").textContent = fKWh(totalEnergia)
+  console.log("[v0] Total Picos (W):", totalPicos)
+  console.log("[v0] Total Energia (kWh):", totalEnergia)
 
-  // Calcular sistema recomendado
-  const pk = totalPicos / 1000
-  const ek = totalEnergia
-  const ekRounded = ceilStep(Math.ceil(ek * 100) / 100)
-  const kit = pickKit(pk, ekRounded)
+  const totalPicosKW = totalPicos / 1000
 
-  const recsElement = document.getElementById("backupRecsList")
-  if (totalPicos > 0 || totalEnergia > 0) {
-    recsElement.innerHTML = `
-      <div class="backup-recommended-system">
-        <i class="fas fa-star"></i> ${kit.name || "Sistema no encontrado"}
+  console.log("[v0] Total Picos (kW):", totalPicosKW)
+
+  const recommendedSystems = getRecommendedBackupSystems(totalPicosKW, totalEnergia)
+  console.log("[v0] Recommended systems:", recommendedSystems)
+
+  // Display results using correct HTML elements
+  const resultsSection = document.getElementById("backupRecommendedSection")
+  const resultsGrid = document.getElementById("backupSistemasGrid")
+
+  if (recommendedSystems.length > 0) {
+    console.log("[v0] Displaying", recommendedSystems.length, "recommended systems")
+
+    resultsGrid.innerHTML = recommendedSystems
+      .map(
+        (system) => `
+        <div class="backup-sistema-card">
+          <div class="backup-sistema-header">
+            <h4>${system.name}</h4>
+            <span class="backup-sistema-type">${system.type}</span>
+          </div>
+          <div class="backup-sistema-content">
+            <p class="backup-sistema-description">${system.description}</p>
+            <div class="backup-sistema-specs">
+              <div class="backup-spec">
+                <span class="backup-spec-label">Inversor:</span>
+                <span class="backup-spec-value">${system.inv_kW} kW</span>
+              </div>
+              <div class="backup-spec">
+                <span class="backup-spec-label">Batería:</span>
+                <span class="backup-spec-value">${system.batt_kWh} kWh</span>
+              </div>
+              <div class="backup-spec">
+                <span class="backup-spec-label">Rango de Potencia:</span>
+                <span class="backup-spec-value">${system.potenciaMinima} - ${system.potenciaMaxima} kW</span>
+              </div>
+              <div class="backup-spec">
+                <span class="backup-spec-label">Máx. Baterías:</span>
+                <span class="backup-spec-value">${system.maxBaterias}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `,
+      )
+      .join("")
+
+    resultsSection.style.display = "block"
+  } else {
+    console.log("[v0] No systems found for power requirement:", totalPicosKW, "kW")
+    resultsGrid.innerHTML = `
+      <div class="backup-no-systems">
+        <p>No se encontraron sistemas recomendados para una potencia de ${totalPicosKW.toFixed(2)} kW.</p>
+        <p>Por favor, contacte con nuestro equipo técnico para una solución personalizada.</p>
       </div>
     `
-  } else {
-    recsElement.innerHTML = ""
+    resultsSection.style.display = "block"
+  }
+}
+
+function updateBackupTotals() {
+  let totalPicos = 0
+  let totalEnergia = 0
+
+  selectedEquipment.forEach((equipment) => {
+    const potenciaTotal = equipment.quantity * equipment.product.w
+    const picos = potenciaTotal * equipment.product.fc
+
+    let energia
+    if (equipment.product.fcoinc > 0) {
+      energia = (equipment.product.fcoinc * equipment.hours * picos) / 1000
+    } else {
+      energia = (equipment.hours * picos) / 1000
+    }
+
+    totalPicos += picos
+    totalEnergia += energia
+
+    const picosCell = document.querySelector(`[data-equipment-id="${equipment.id}"].backup-picos`)
+    const energiaCell = document.querySelector(`[data-equipment-id="${equipment.id}"].backup-energia`)
+
+    if (picosCell) {
+      picosCell.textContent = Math.round(picos).toLocaleString()
+    }
+    if (energiaCell) {
+      energiaCell.textContent = energia.toFixed(2)
+    }
+  })
+
+  // Update totals in the table footer
+  const picosElement = document.getElementById("backupTotalPicos")
+  const energiaElement = document.getElementById("backupTotalEnergia")
+
+  if (picosElement) {
+    picosElement.textContent = Math.round(totalPicos).toLocaleString()
+  }
+  if (energiaElement) {
+    energiaElement.textContent = totalEnergia.toFixed(2)
   }
 }
 
 function clearBackupCalculator() {
-  document.querySelectorAll(".backup-input").forEach((input) => {
-    input.value = "0"
-  })
+  selectedEquipment = []
+  buildSelectedEquipmentTable()
   recalcBackup()
+
+  // Reset form inputs
+  document.getElementById("equipmentSelect").value = ""
+  document.getElementById("equipmentQuantity").value = "1"
+  document.getElementById("equipmentHours").value = "1"
+
+  // Ocultar la sección de sistema recomendado
+  const backupRecommendedSection = document.getElementById("backupRecommendedSection")
+  if (backupRecommendedSection) {
+    backupRecommendedSection.style.display = "none"
+  }
 }
 
 function exportBackupCSV() {
   let csvContent = "Equipo,Potencia (W),Cantidad,Horas,Picos (W),Energía (kWh)\n"
 
-  BACKUP_PRODUCTS.forEach((product, index) => {
-    const quantity = document.querySelector(`.backup-quantity[data-index="${index}"]`).value || "0"
-    const hours = document.querySelector(`.backup-hours[data-index="${index}"]`).value || "0"
-    const picos = document.querySelector(`.backup-picos[data-index="${index}"]`).textContent
-    const energia = document.querySelector(`.backup-energia[data-index="${index}"]`).textContent
+  selectedEquipment.forEach((equipment) => {
+    const quantity = equipment.quantity
+    const hours = equipment.hours
+    const product = equipment.product
+    const PT = quantity * product.w
+    const PE = PT * product.fc
+    const P = product.start > 1 ? PT * product.start : PE
+    const E = (hours * PE * (product.fcoinc === 0 ? 1 : product.fcoinc)) / 1000
 
-    if (Number.parseFloat(quantity) > 0 || Number.parseFloat(hours) > 0) {
-      csvContent += `"${product.name}",${product.w},${quantity},${hours},"${picos}","${energia}"\n`
-    }
+    csvContent += `"${product.name}",${product.w},${quantity},${hours},"${fW(P)}","${fKWh(E)}"\n`
   })
 
   const totalPicos = document.getElementById("backupTotalPicos").textContent
@@ -898,7 +1289,6 @@ let elementos = {}
 let datosCalculados = null
 let autoSaveTimeout = null
 let registroGuardado = false
-
 const gtag = window.gtag || (() => {})
 
 // Función para mostrar notificaciones
@@ -911,6 +1301,7 @@ function getRecommendedSystems(consumption) {
   // Encontrar el rango correspondiente
   const matchingRange = systemsData.find((range) => consumption >= range.range[0] && consumption <= range.range[1])
   if (matchingRange) {
+    // Devolver todos los sistemas sin marcar ninguno como recomendado
     return matchingRange.systems.slice(0, 3) // Máximo 3 sistemas
   } else {
     return []
@@ -920,6 +1311,18 @@ function getRecommendedSystems(consumption) {
 // Función para calcular área requerida
 function calculateArea(panels) {
   return panels * 2.62 * 1.3
+}
+
+function calcularProduccionMensual(potenciaKW) {
+  // Fórmula oficial: Producción anual = TAMAÑO × 3.3 × 30 × 12
+  // Producción mensual = Producción anual ÷ 12 = TAMAÑO × 3.3 × 30 = TAMAÑO × 99
+  return potenciaKW * 99
+}
+
+function extraerPotenciaDelSistema(descripcion) {
+  // Extraer potencia de descripciones como "INVERSOR SINGLE PHASE 3KW", "INVERSOR SPLIT PHASE 10KW", etc.
+  const match = descripcion.match(/(\d+(?:\.\d+)?)\s*KW/i)
+  return match ? Number.parseFloat(match[1]) : 0
 }
 
 // 🆕 FUNCIÓN PARA CALCULAR COSTO PROGRESIVO (IGUAL AL SCRIPT ADJUNTO)
@@ -932,7 +1335,6 @@ function calcularCostoProgresivo(consumo) {
     if (consumo >= tramo.desde && consumo <= tramo.hasta) {
       let costoTotal = 0
       let rangoAnterior = 0
-
       if (tramo.desde === 50) {
         costoTotal = consumo * tramo.tarifa
       } else if (tramo.desde === 100) {
@@ -967,49 +1369,92 @@ function calcularCostoProgresivo(consumo) {
         const consumoEnRango = consumo - tramo.desde
         costoTotal = tramo.costoBase + consumoEnRango * tramo.tarifa
       }
-
       return costoTotal
     }
   }
   return 0
 }
 
-// 🆕 FUNCIÓN PARA CALCULAR DATOS FTV DE UN SISTEMA
-function calcularDatosFTV(sistema, consumoOriginal) {
-  // Costo mensual sin sistema FTV
-  const costoMensualSinSFV = calcularCostoProgresivo(consumoOriginal)
+function calcularDatosFTV(sistema, consumoActual) {
+  // Calcular producción automáticamente basándose en la potencia del sistema
+  const potencia = extraerPotenciaDelSistema(sistema.description)
+  const produccionMensualCalculada = calcularProduccionMensual(potencia)
 
-  // Nuevo consumo con sistema FTV (solo para sistemas ON GRID y HIBRIDO)
-  let nuevoConsumoMensual = consumoOriginal
-  let nuevoCostoMensual = costoMensualSinSFV
-  let ahorroMensualReal = 0
-  let ahorroAnualReal = 0
+  // Para sistemas de respaldo, la producción es 0
+  const produccionFinal = sistema.type === "Sistema de Respaldo" ? 0 : produccionMensualCalculada
 
-  if (sistema.type === "ON GRID" || sistema.type === "HIBRIDO") {
-    // Calcular nuevo consumo restando la producción del sistema
-    nuevoConsumoMensual = Math.max(0, consumoOriginal - sistema.produccionMensual)
-
-    // Calcular nuevo costo mensual con el nuevo consumo
-    nuevoCostoMensual = calcularCostoProgresivo(nuevoConsumoMensual)
-
-    // Calcular ahorro real
-    ahorroMensualReal = costoMensualSinSFV - nuevoCostoMensual
-    ahorroAnualReal = ahorroMensualReal * 12
-  }
+  const nuevoConsumo = Math.max(0, consumoActual - produccionFinal)
+  const nuevoCosto = calcularCostoProgresivo(nuevoConsumo)
+  const costoActual = calcularCostoProgresivo(consumoActual)
+  const ahorroMensual = costoActual - nuevoCosto
+  const ahorroAnual = ahorroMensual * 12
 
   return {
-    costoMensualSinSFV,
-    nuevoConsumoMensual,
-    nuevoCostoMensual,
-    ahorroMensualReal,
-    ahorroAnualReal,
+    nuevoConsumo: nuevoConsumo,
+    nuevoCosto: nuevoCosto,
+    ahorroMensual: ahorroMensual,
+    ahorroAnual: ahorroAnual,
+    produccionMensual: produccionFinal,
+    costoActual: costoActual, // Added for display in getSavingsOrEmergencyMessage
   }
 }
+
+// 🆕 FUNCIÓN PARA CALCULAR DATOS FTV DE UN SISTEMA
+// function calcularDatosFTV(sistema, consumoOriginal) {
+//   // Costo mensual sin sistema FTV
+//   const costoMensualSinSFV = calcularCostoProgresivo(consumoOriginal)
+
+//   // Nuevo consumo con sistema FTV (solo para sistemas ON GRID y HIBRIDO)
+//   let nuevoConsumoMensual = consumoOriginal
+//   let nuevoCostoMensual = costoMensualSinSFV
+//   let ahorroMensualReal = 0
+//   let ahorroAnualReal = 0
+
+//   if (sistema.type === "Sistema de ahorro energetico" || sistema.type === "Sistema de Ahorro + Respaldo") {
+//     // Calcular nuevo consumo restando la producción del sistema
+//     nuevoConsumoMensual = Math.max(0, consumoOriginal - sistema.produccionMensual)
+//     // Calcular nuevo costo mensual con el nuevo consumo
+//     nuevoCostoMensual = calcularCostoProgresivo(nuevoConsumoMensual)
+//     // Calcular ahorro real
+//     ahorroMensualReal = costoMensualSinSFV - nuevoCostoMensual
+//     ahorroAnualReal = ahorroMensualReal * 12
+//   }
+
+//   return {
+//     costoMensualSinSFV,
+//     nuevoConsumoMensual,
+//     nuevoCostoMensual,
+//     ahorroMensualReal,
+//     ahorroAnualReal,
+//   }
+// }
 
 // Inicialización cuando el DOM está listo
 document.addEventListener("DOMContentLoaded", () => {
   inicializarElementos()
   configurarEventListeners()
+  // Initialize backup calculator dropdown
+  populateEquipmentDropdown()
+  // Add event listeners for backup calculator inputs
+  const quantityInputs = document.querySelectorAll(".backup-quantity")
+  const hoursInputs = document.querySelectorAll(".backup-hours")
+  // Event delegation for dynamically added inputs
+  document.addEventListener("input", (e) => {
+    if (e.target.classList.contains("backup-quantity") || e.target.classList.contains("backup-hours")) {
+      recalcBackup()
+    }
+  })
+  // Add equipment button event listener
+  const addEquipmentBtn = document.getElementById("addEquipmentBtn")
+  if (addEquipmentBtn) {
+    addEquipmentBtn.addEventListener("click", addSelectedEquipment)
+  }
+  // Clear backup calculator button
+  const clearBackupBtn = document.getElementById("clearBackupBtn")
+  if (clearBackupBtn) {
+    clearBackupBtn.addEventListener("click", clearBackupCalculator)
+  }
+  buildSelectedEquipmentTable()
 })
 
 function inicializarElementos() {
@@ -1072,7 +1517,6 @@ function configurarEventListeners() {
   })
 
   elementos.closeModal.addEventListener("click", cerrarModalConsumo)
-
   elementos.consumoModal.addEventListener("click", (e) => {
     if (e.target === elementos.consumoModal) {
       cerrarModalConsumo()
@@ -1111,13 +1555,11 @@ function configurarEventListeners() {
     e.preventDefault()
     const dropdown = document.getElementById("backupDropdown")
     const chevron = document.getElementById("backupChevron")
-
     if (dropdown.style.display === "none" || dropdown.style.display === "") {
       dropdown.style.display = "block"
       chevron.classList.add("rotated")
-      buildBackupTable()
+      buildSelectedEquipmentTable()
       recalcBackup()
-
       // Scroll suave hacia la calculadora
       setTimeout(() => {
         dropdown.scrollIntoView({ behavior: "smooth", block: "start" })
@@ -1138,19 +1580,26 @@ function configurarEventListeners() {
     }
   })
 
-  // Cerrar modal al hacer clic fuera
-  document.getElementById("backupModal").addEventListener("click", (e) => {
-    if (e.target.id === "backupModal") {
-      document.getElementById("backupModal").style.display = "none"
+  document.getElementById("addEquipmentBtn").addEventListener("click", addSelectedEquipment)
+
+  // Allow adding equipment with Enter key
+  document.getElementById("equipmentHours").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      addSelectedEquipment()
     }
   })
 }
 
 // 💾 FUNCIÓN PARA GUARDAR REGISTRO INMEDIATO
 async function guardarRegistroInmediato(nombre) {
-  if (registroGuardado) return
+  if (registroGuardado) {
+    console.log("[v0] ⚠️ Registro ya guardado, saltando...")
+    return
+  }
 
   try {
+    console.log("[v0] 🔄 Iniciando guardado automático para:", nombre)
+
     const registroInmediato = {
       fechaCalculo: new Date().toISOString(),
       nombre: nombre,
@@ -1162,7 +1611,7 @@ async function guardarRegistroInmediato(nombre) {
       consumoAnual: 0,
       costoMensualActual: 0.0,
       costoAnualActual: 0,
-      tamanoSistema: 0.0,
+      tamanoSistema: 0,
       precioInversion: 0,
       produccionAnual: 0,
       produccionMensual: 0,
@@ -1176,7 +1625,7 @@ async function guardarRegistroInmediato(nombre) {
       tiempoRetorno: 0.0,
     }
 
-    console.log("🔄 Guardando registro automáticamente:", registroInmediato)
+    console.log("[v0] 📝 Registro inmediato preparado:", registroInmediato)
 
     const response = await fetch(POWER_AUTOMATE_URL, {
       method: "POST",
@@ -1187,9 +1636,11 @@ async function guardarRegistroInmediato(nombre) {
       body: JSON.stringify(registroInmediato),
     })
 
+    console.log("[v0] 📡 Respuesta guardado inmediato - Status:", response.status)
+
     if (response.ok) {
       registroGuardado = true
-      console.log("✅ LEAD CAPTURADO - Registro automático guardado:", nombre)
+      console.log("[v0] ✅ LEAD CAPTURADO - Registro automático guardado:", nombre)
       gtag("event", "lead_captured", {
         event_category: "Solar Calculator",
         event_label: "Auto Save Name",
@@ -1197,13 +1648,18 @@ async function guardarRegistroInmediato(nombre) {
       })
     } else {
       const errorText = await response.text()
-      console.error("❌ Error del servidor:", response.status, response.statusText, errorText)
+      console.error(
+        "[v0] ❌ Error del servidor en guardado inmediato:",
+        response.status,
+        response.statusText,
+        errorText,
+      )
       throw new Error(`Error ${response.status}: ${response.statusText} - ${errorText}`)
     }
   } catch (error) {
-    console.error("❌ Error detallado al guardar registro automático:", error)
+    console.error("[v0] ❌ Error detallado al guardar registro automático:", error)
     setTimeout(() => {
-      console.log("🔄 Reintentando guardado automático...")
+      console.log("[v0] 🔄 Reintentando guardado automático...")
       registroGuardado = false
       guardarRegistroInmediato(nombre)
     }, 3000)
@@ -1218,20 +1674,20 @@ function abrirWhatsApp() {
   mostrarNotificacion("📱 Redirigiendo a WhatsApp...", "info")
 }
 
-function validarCelular(celular) {
-  const regex = /^593\d{9}$/
-  return regex.test(celular)
-}
+// function validarCelular(celular) {
+//   const regex = /^593\d{9}$/
+//   return regex.test(celular)
+// }
 
 function validarEmail(email) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  const regex = /^[^\s@]+@[^\s@]+$/
   return regex.test(email)
 }
 
 // 🆕 NUEVA FUNCIÓN PARA MOSTRAR AHORROS O MENSAJE DE EMERGENCIA CON CÁLCULOS FTV
 function getSavingsOrEmergencyMessage(sistema, consumo) {
   // Si el consumo es menor a 200 kWh y es un Power Station, mostrar mensaje especial
-  if (consumo < 200 && sistema.type === "POWER STATION") {
+  if (consumo < 200 && sistema.type === "Sistema de Respaldo") {
     return `
       <div class="emergency-message">
         <div class="emergency-icon">
@@ -1255,24 +1711,25 @@ function getSavingsOrEmergencyMessage(sistema, consumo) {
   }
 
   // Para TODOS los sistemas OFF GRID, mostrar mensaje especial sin ahorros
-  if (sistema.type.includes("OFF GRID")) {
+  if (sistema.type === "Sistema de Respaldo") {
     return `
       <div class="emergency-message off-grid">
         <div class="emergency-icon">
           <i class="fas fa-battery-full"></i>
         </div>
         <div class="emergency-content">
-          <h4>⚡ Sistema de Respaldo Inteligente</h4>
-          <p><strong>¡Energía limpia cuando más la necesitas!</strong></p>
+          <h4>Sistema de Respaldo Inteligente</h4>
+          
           <ul class="emergency-benefits">
-            <li>✅ <strong>Respaldo automático</strong> durante cortes de luz</li>
-            <li>✅ <strong>Energía solar gratuita</strong> durante el día</li>
-            <li>✅ <strong>Batería de litio</strong> de larga duración</li>
-            <li>✅ <strong>Reduce dependencia</strong> de la red eléctrica</li>
+            <li>Respaldo automático durante cortes de luz</li>
+            <li>Energía solar gratuita durante el día</li>
+            <li>Batería de litio de larga duración</li>
+            <li>Reduce dependencia de la red eléctrica</li>
+            
           </ul>
           <div class="emergency-highlight">
-            <i class="fas fa-info-circle"></i>
-            <span><strong>Sistema de respaldo energético</strong> - Seguridad garantizada</span>
+           
+            
           </div>
         </div>
       </div>
@@ -1281,7 +1738,6 @@ function getSavingsOrEmergencyMessage(sistema, consumo) {
 
   // Para sistemas ON GRID y HIBRIDO, calcular y mostrar ahorros reales con FTV
   const datosFTV = calcularDatosFTV(sistema, consumo)
-
   return `
     <div class="sistema-savings">
       <div class="ftv-calculations" style="background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 0.375rem; padding: 0.875rem; margin-bottom: 1rem;">
@@ -1291,7 +1747,7 @@ function getSavingsOrEmergencyMessage(sistema, consumo) {
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.8rem;">
           <div>
             <span style="color: #64748b;">Costo actual mensual:</span>
-            <div style="font-weight: 600; color: #dc2626;">${formatearMoneda(datosFTV.costoMensualSinSFV)}</div>
+            <div style="font-weight: 600; color: #dc2626;">${formatearMoneda(datosFTV.costoActual)}</div>
           </div>
           <div>
             <span style="color: #64748b;">Consumo original:</span>
@@ -1299,21 +1755,21 @@ function getSavingsOrEmergencyMessage(sistema, consumo) {
           </div>
           <div>
             <span style="color: #64748b;">Nuevo consumo:</span>
-            <div style="font-weight: 600; color: #059669;">${Math.round(datosFTV.nuevoConsumoMensual)} kWh</div>
+            <div style="font-weight: 600; color: #059669;">${Math.round(datosFTV.nuevoConsumo)} kWh</div>
           </div>
           <div>
             <span style="color: #64748b;">Nuevo costo mensual:</span>
-            <div style="font-weight: 600; color: #059669;">${formatearMoneda(datosFTV.nuevoCostoMensual)}</div>
+            <div style="font-weight: 600; color: #059669;">${formatearMoneda(datosFTV.nuevoCosto)}</div>
           </div>
         </div>
       </div>
       <div class="savings-item">
-        <span class="savings-label">Ahorro mensual real:</span>
-        <span class="savings-value">${formatearMoneda(datosFTV.ahorroMensualReal)}</span>
+        <span class="savings-label">Ahorro mensual:</span>
+        <span class="savings-value">${formatearMoneda(datosFTV.ahorroMensual)}</span>
       </div>
       <div class="savings-item">
-        <span class="savings-label">Ahorro anual real:</span>
-        <span class="savings-value">${formatearMoneda(datosFTV.ahorroAnualReal)}</span>
+        <span class="savings-label">Ahorro anual:</span>
+        <span class="savings-value">${formatearMoneda(datosFTV.ahorroAnual)}</span>
       </div>
     </div>
   `
@@ -1323,7 +1779,6 @@ function getSavingsOrEmergencyMessage(sistema, consumo) {
 function generarPDFSistema(sistema, datosCliente) {
   try {
     mostrarNotificacion("📄 Generando cotización PDF...", "info")
-
     // Verificar que jsPDF esté disponible
     if (typeof window.jspdf === "undefined") {
       console.error("jsPDF no está cargado")
@@ -1343,26 +1798,21 @@ function generarPDFSistema(sistema, datosCliente) {
       doc.setTextColor(100, 100, 100) // Gris más oscuro
       doc.setFontSize(45) // Tamaño más manejable
       doc.setFont("helvetica", "bold")
-
       const pageWidth = doc.internal.pageSize.width
       const pageHeight = doc.internal.pageSize.height
-
       // Múltiples marcas de agua en diferentes posiciones
       const positions = [
         { x: pageWidth * 0.3, y: pageHeight * 0.3 },
         { x: pageWidth * 0.7, y: pageHeight * 0.5 },
         { x: pageWidth * 0.5, y: pageHeight * 0.7 },
       ]
-
       const angle = -25 * (Math.PI / 180) // Ángulo menos pronunciado
-
       positions.forEach((pos) => {
         doc.text("MARRIOTT SOLUTIONS", pos.x, pos.y, {
           angle: angle,
           align: "center",
         })
       })
-
       doc.restoreGraphicsState()
     }
 
@@ -1374,17 +1824,14 @@ function generarPDFSistema(sistema, datosCliente) {
       doc.setTextColor(120, 120, 120)
       doc.setFontSize(20)
       doc.setFont("helvetica", "normal")
-
       const pageWidth = doc.internal.pageSize.width
       const pageHeight = doc.internal.pageSize.height
-
       // Crear patrón repetitivo
       for (let y = 30; y < pageHeight; y += 40) {
         for (let x = 20; x < pageWidth; x += 80) {
           doc.text("MARRIOTT", x, y, { angle: -15 * (Math.PI / 180) })
         }
       }
-
       doc.restoreGraphicsState()
     }
 
@@ -1404,11 +1851,9 @@ function generarPDFSistema(sistema, datosCliente) {
     doc.setFontSize(20)
     doc.setFont("helvetica", "bold")
     doc.text("MARRIOTT SOLUTIONS", 105, 15, { align: "center" })
-
     doc.setFontSize(14)
     doc.setFont("helvetica", "normal")
     doc.text("COTIZACIÓN SISTEMA SOLAR", 105, 25, { align: "center" })
-
     doc.setFontSize(10)
     doc.text(`Sistema: ${sistema.name}`, 105, 32, { align: "center" })
 
@@ -1426,18 +1871,16 @@ function generarPDFSistema(sistema, datosCliente) {
     doc.setFontSize(16)
     doc.setFont("helvetica", "bold")
     doc.text("INFORMACIÓN DEL CLIENTE", 20, yPos)
-
     yPos += 10
     doc.setFontSize(11)
     doc.setFont("helvetica", "normal")
     doc.text(`Nombre: ${datosCliente.nombre}`, 20, yPos)
     doc.text(`Tipo: ${datosCliente.tipoCliente}`, 110, yPos)
-
     yPos += 7
     doc.text(`Celular: ${datosCliente.celular}`, 20, yPos)
     doc.text(`Ciudad: ${datosCliente.ciudad}`, 110, yPos)
-
     yPos += 7
+
     // Dividir email largo si es necesario
     const emailText = `Email: ${datosCliente.email}`
     if (emailText.length > 40) {
@@ -1454,7 +1897,6 @@ function generarPDFSistema(sistema, datosCliente) {
     doc.setFont("helvetica", "bold")
     doc.setTextColor(...primaryColor)
     doc.text("SISTEMA COTIZADO", 20, yPos)
-
     yPos += 15
     doc.setFontSize(12)
     doc.setTextColor(...textColor)
@@ -1463,11 +1905,9 @@ function generarPDFSistema(sistema, datosCliente) {
     const descripcion = sistema.description
     const maxWidth = 170
     const lines = doc.splitTextToSize(descripcion, maxWidth)
-
     for (let i = 0; i < lines.length; i++) {
       doc.text(lines[i], 20, yPos + i * 6)
     }
-
     yPos += lines.length * 6 + 5
 
     doc.setFontSize(11)
@@ -1479,7 +1919,6 @@ function generarPDFSistema(sistema, datosCliente) {
     } else if (datosCliente.consumo > 201) {
       doc.text(`Paneles: No aplica`, 110, yPos)
     }
-
     yPos += 7
 
     // Mostrar área o "No requiere" según paneles y consumo
@@ -1499,7 +1938,6 @@ function generarPDFSistema(sistema, datosCliente) {
     doc.setFont("helvetica", "bold")
     doc.setTextColor(...primaryColor)
     doc.text("INVERSIÓN", 20, yPos)
-
     yPos += 15
     doc.setFontSize(14)
     doc.setTextColor(...textColor)
@@ -1516,32 +1954,31 @@ function generarPDFSistema(sistema, datosCliente) {
     doc.setFont("helvetica", "bold")
     doc.setTextColor(...primaryColor)
     doc.text("BENEFICIOS", 20, yPos)
-
     yPos += 15
     doc.setFontSize(12)
     doc.setTextColor(...textColor)
 
     // Verificar si es sistema de emergencia o calcular ahorros FTV
-    if (sistema.type === "POWER STATION" || sistema.type === "OFF GRID") {
+    if (sistema.type === "Sistema de Respaldo") {
       doc.text("✓ Sistema de respaldo energético", 20, yPos)
       doc.text("✓ Energía limpia y renovable", 20, yPos + 6)
       doc.text("✓ Independencia energética", 20, yPos + 12)
     } else {
       const datosFTV = calcularDatosFTV(sistema, datosCliente.consumo)
       doc.text("✓ Ahorro en factura eléctrica", 20, yPos)
-      doc.text(`Ahorro mensual: ${formatearMoneda(datosFTV.ahorroMensualReal)}`, 20, yPos + 6)
-      doc.text(`Ahorro anual: ${formatearMoneda(datosFTV.ahorroAnualReal)}`, 20, yPos + 12)
+      doc.text(`Ahorro mensual: ${formatearMoneda(datosFTV.ahorroMensual)}`, 20, yPos + 6)
+      doc.text(`Ahorro anual: ${formatearMoneda(datosFTV.ahorroAnual)}`, 20, yPos + 12)
     }
 
     // 📝 NOTA ADICIONAL - IGUAL AL OTRO SCRIPT
     yPos += 25
-    doc.setFontSize(12)
+    doc.setFontSize(8)
     doc.setTextColor(...textColor)
     doc.setFont("helvetica", "normal")
 
     // Mensaje de nota con las especificaciones del otro script
     const mensajaNota =
-      "Notas:\n• La cantidad final de paneles será confirmada luego de un análisis gratuito realizado por nuestros expertos.\n• Las horas de respaldo estarán sujetas a la configuración de batería recomendada por nuestro equipo técnico.\n• El ahorro estimado dependerá de la correcta disposición y configuración del medidor bidireccional."
+      "Notas:\n• El ahorro estimado también dependerá del uso que se le dé a la batería. \n• La cantidad final de paneles será confirmada luego de un análisis gratuito realizado por nuestros expertos.\n• Las horas de respaldo estarán sujetas a la configuración de batería recomendada por nuestro equipo técnico.\n• El ahorro estimado dependerá de la correcta disposición y configuración del medidor bidireccional."
 
     // Dividir el mensaje en líneas si es muy largo
     const maxWidthNota = 170
@@ -1571,17 +2008,18 @@ function generarPDFSistema(sistema, datosCliente) {
     yPos = 285
     doc.setFillColor(...primaryColor)
     doc.rect(0, yPos, 210, 17, "F")
-
     doc.setTextColor(255, 255, 255)
     doc.setFontSize(10)
     doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 091 0905", 20, yPos + 10)
 
     // Generar nombre del archivo
-    const nombreArchivo = `Cotizacion_${sistema.name.replace(/\s+/g, "_")}_${datosCliente.nombre.replace(/\s+/g, "_")}_${new Date().toISOString().split("T")[0]}.pdf`
+    const nombreArchivo = `Cotizacion_${sistema.name.replace(/\s+/g, "_")}_${datosCliente.nombre.replace(
+      /\s+/g,
+      "_",
+    )}_${new Date().toISOString().split("T")[0]}.pdf`
 
     // Descargar el PDF
     doc.save(nombreArchivo)
-
     console.log("✅ PDF generado exitosamente:", nombreArchivo)
     mostrarNotificacion("📄 PDF generado exitosamente", "success")
   } catch (error) {
@@ -1669,11 +2107,11 @@ function mostrarResultados(datos) {
   elementos.contenedorHibrido.style.display = "none"
 
   // Mostrar contenedor específico según tipo de sistema
-  if (datos.sistema.type === "ON GRID") {
+  if (datos.sistema.type === "Sistema de ahorro energetico") {
     mostrarContenedorAhorro(datos)
-  } else if (datos.sistema.type === "OFF GRID" || datos.sistema.type === "POWER STATION") {
+  } else if (datos.sistema.type === "Sistema de Respaldo" || datos.sistema.type === "POWER STATION") {
     mostrarContenedorRespaldo(datos)
-  } else if (datos.sistema.type === "HIBRIDO") {
+  } else if (datos.sistema.type === "Sistema de Ahorro + Respaldo") {
     mostrarContenedorHibrido(datos)
   }
 
@@ -1685,23 +2123,13 @@ function mostrarResultados(datos) {
   elementos.resultados.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 
-// 💰 MOSTRAR CONTENEDOR DE AHORRO (ON GRID)
+// 🎨 FUNCIÓN PARA MOSTRAR CONTENEDOR DE AHORRO (ON GRID)
 function mostrarContenedorAhorro(datos) {
-  elementos.contenedorAhorro.innerHTML = `
-    <div class="system-alert system-alert-success">
-      <div class="alert-content">
-        <i class="fas fa-piggy-bank"></i>
-        <div>
-          <h4>¡Sistema de Ahorro Energético!</h4>
-          <p>Este sistema te permitirá <strong>reducir significativamente</strong> tu factura eléctrica mensual conectándose directamente a la red eléctrica.</p>
-        </div>
-      </div>
-    </div>
-  `
+  elementos.contenedorAhorro.innerHTML = ""
   elementos.contenedorAhorro.style.display = "block"
 }
 
-// 🔋 MOSTRAR CONTENEDOR DE RESPALDO (OFF GRID)
+// 🔋 FUNCIÓN PARA MOSTRAR CONTENEDOR DE RESPALDO (OFF GRID)
 function mostrarContenedorRespaldo(datos) {
   // No mostrar contenedor para sistemas de respaldo
   if (elementos.contenedorRespaldo) {
@@ -1709,179 +2137,300 @@ function mostrarContenedorRespaldo(datos) {
   }
 }
 
-// ⚡ MOSTRAR CONTENEDOR HÍBRIDO
+// ⚡ FUNCIÓN PARA MOSTRAR CONTENEDOR HÍBRIDO
 function mostrarContenedorHibrido(datos) {
-  elementos.contenedorHibrido.innerHTML = `
-    <div class="system-alert system-alert-hybrid">
-      <div class="alert-content">
-        <i class="fas fa-star"></i>
-        <div>
-          <h4>¡Sistema Híbrido - Lo Mejor de Ambos Mundos!</h4>
-          <p>Este sistema te permite <strong>ahorrar en tu factura eléctrica</strong> Y tener <strong>energía de respaldo</strong> durante cortes de luz.</p>
-        </div>
-      </div>
-    </div>
-  `
+  elementos.contenedorHibrido.innerHTML = ""
   elementos.contenedorHibrido.style.display = "block"
 }
 
 // 🏷️ FUNCIÓN PARA MOSTRAR SISTEMAS RECOMENDADOS (MODIFICADA)
 function mostrarSistemasRecomendados(consumo) {
-  // Obtener sistemas recomendados usando la misma lógica del TSX
+  // Obtener sistemas usando la misma lógica del TSX
   const sistemasRecomendados = getRecommendedSystems(consumo)
+
+  function getBadgeClass(tipo) {
+    switch (tipo) {
+      case "Sistema de ahorro energetico":
+        return "badge-on-grid"
+      case "Sistema de Respaldo":
+        return "badge-off-grid"
+      case "Sistema de Ahorro + Respaldo":
+        return "badge-hibrido"
+      default:
+        return "badge-on-grid"
+    }
+  }
+
+  // Reemplaza la función `calcularConsumoYAhorro` con la correcta:
+  function calcularConsumoYAhorro(sistema, consumoActual) {
+    // Usar la función de cálculo FTV correcta
+    const datosFTV = calcularDatosFTV(sistema, consumoActual)
+
+    return {
+      consumoActual: consumoActual,
+      consumoNuevo: Math.round(datosFTV.nuevoConsumo),
+      ahorro: Math.round(consumoActual - datosFTV.nuevoConsumo),
+      costoActual: calcularCostoProgresivo(consumoActual),
+      costoNuevo: datosFTV.nuevoCosto,
+      ahorroEconomico: datosFTV.ahorroMensual,
+    }
+  }
+
   console.log(`🔍 Para consumo ${consumo} kWh, sistemas encontrados:`, sistemasRecomendados)
 
   if (sistemasRecomendados.length === 0) {
     elementos.sistemasGrid.innerHTML = `
       <div class="sistema-card">
-        <div class="sistema-card-content">
-          <p>No se encontraron sistemas para este rango de consumo.</p>
-        </div>
-      </div>
-    `
-  } else {
-    // Generar HTML para cada sistema
-    elementos.sistemasGrid.innerHTML = sistemasRecomendados
-      .map(
-        (sistema, index) => `
-      <div class="sistema-card ${index === 0 ? "sistema-destacado" : ""}">
         <div class="sistema-card-header">
-          <div class="sistema-type-badge ${getBadgeClass(sistema.type)}">
-            ${getSystemIcon(sistema.type)}
-            ${sistema.type}
-            ${sistema.roi ? `<span class="roi-badge">ROI: ${sistema.roi} años</span>` : ""}
+          <div class="sistema-type-badge badge-power-station">
+            <i class="fas fa-tools"></i>
+            PERSONALIZADO
           </div>
-          <h3 class="sistema-title">${sistema.description}</h3>
+          <h3 class="sistema-title">Sistema Personalizado Requerido</h3>
         </div>
         <div class="sistema-card-content">
-          ${
-            sistema.panels > 0
-              ? `
           <div class="sistema-specs">
             <div class="spec-item">
-              <span class="spec-label">Paneles solares:</span>
-              <span class="spec-value">${sistema.panels} paneles</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Área requerida:</span>
-              <span class="spec-value">${calculateArea(sistema.panels).toFixed(1)} m²</span>
+              <span class="spec-label">Tu Consumo:</span>
+              <span class="spec-value">${consumo} kWh</span>
             </div>
           </div>
-          `
-              : consumo > 201
-                ? `
-          <div class="sistema-specs">
-            <div class="spec-item">
-              <span class="spec-label">Paneles solares:</span>
-              <span class="spec-value">No aplica</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Área requerida:</span>
-              <span class="spec-value">No requiere</span>
+          <div class="emergency-message">
+            <div class="emergency-content">
+              <p>Tu consumo de <strong>${consumo} kWh</strong> requiere un sistema personalizado.</p>
+              <p>Contacta a nuestro equipo para una solución a medida.</p>
             </div>
           </div>
-          `
-                : ""
-          }
-                                        
-          ${getSavingsOrEmergencyMessage(sistema, consumo)}
-                                                  
-          <div class="sistema-price">
-            <div class="price-item">
-              <span class="price-label">Precio de Inversión:</span>
-              <span class="price-value price-inversion">${formatearMoneda(sistema.price)}</span>
-            </div>
-            ${
-              sistema.priceWithIVA
-                ? `
-            <div class="price-item">
-              <span class="price-label">Precio + IVA:</span>
-              <span class="price-value price-iva">${formatearMoneda(sistema.priceWithIVA)}</span>
-            </div>
-            `
-                : ""
-            }
-          </div>
-                                                  
-          <button class="btn-cotizar" onclick="generarPDFSistema(${JSON.stringify(sistema).replace(/"/g, "&quot;")}, ${JSON.stringify(datosCalculados).replace(/"/g, "&quot;")})">
-            <i class="fas fa-file-pdf"></i>
-            Descargar Cotización PDF
+          <button class="btn-cotizar" onclick="abrirWhatsApp()">
+            <i class="fab fa-whatsapp"></i>
+            Contactar Expertos
           </button>
         </div>
       </div>
-    `,
-      )
-      .join("")
+    `
+    elementos.sistemasRecomendados.style.display = "block"
+    return
   }
 
-  // Mostrar la sección
+  elementos.sistemasGrid.innerHTML = sistemasRecomendados
+    .map((sistema) => {
+      const datos = calcularConsumoYAhorro(sistema, consumo)
+      const roi = calcularROI(sistema, datos.ahorroEconomico * 12)
+
+      return `
+        <div class="sistema-card">
+          <div class="sistema-card-header">
+            <div class="sistema-type-badge ${getBadgeClass(sistema.type)}">
+              <i class="fas fa-solar-panel"></i>
+              ${sistema.type}
+            </div>
+            <h3 class="sistema-title">${sistema.description}</h3>
+          </div>
+          <div class="sistema-card-content">
+            ${
+              sistema.img
+                ? `
+              <div class="sistema-image-section">
+                <div class="sistema-image-container" onclick="abrirModalImagen('${sistema.img}', '${sistema.name}')">
+                  <img src="${sistema.img}" alt="${sistema.name}" class="sistema-image">
+                  <div class="image-overlay">
+                    <i class="fas fa-search-plus"></i>
+                    <span>Ver imagen</span>
+                  </div>
+                </div>
+              </div>
+            `
+                : ""
+            }
+            <div class="sistema-specs">
+              <div class="spec-item">
+                <span class="spec-label">Área requerida:</span>
+                <span class="spec-value">${sistema.panels > 0 ? calculateArea(sistema.panels).toFixed(1) + " m²" : "No requiere"}</span>
+              </div>
+            </div>
+            ${
+              sistema.type === "Sistema de ahorro energetico" || sistema.type === "Sistema de Ahorro + Respaldo"
+                ? `
+                <div class="operacion-matematica" style="margin: 15px 0; padding: 10px; background-color: #f8f9fa; border-radius: 5px;">
+                  <div class="operacion-texto" style="margin-bottom: 5px;"><strong>Consumo actual:</strong> ${datos.consumoActual} kWh/mes</div>
+                  <div class="operacion-texto" style="margin-bottom: 5px;"><strong>Consumo nuevo:</strong> ${datos.consumoNuevo} kWh/mes</div>
+                  <hr style="margin: 8px 0; border: 1px solid #ddd;">
+                  <div class="operacion-texto" style="margin-bottom: 10px; color: #28a745;"><strong>Ahorro:</strong> ${datos.ahorro} kWh/mes</div>
+                  
+                  <div class="operacion-texto" style="margin-bottom: 5px;"><strong>Costo actual:</strong> ${formatearMoneda(datos.costoActual)}</div>
+                  <div class="operacion-texto" style="margin-bottom: 5px;"><strong>Costo nuevo:</strong> ${formatearMoneda(datos.costoNuevo)}</div>
+                  <hr style="margin: 8px 0; border: 1px solid #ddd;">
+                  <div class="operacion-texto" style="color: #28a745;"><strong>Ahorro económico:</strong> ${formatearMoneda(datos.ahorroEconomico)} /mes</div>
+                </div>
+              `
+                : ""
+            }
+            ${
+              sistema.type === "Sistema de Respaldo"
+                ? `
+              <div class="emergency-message off-grid">
+                <div class="emergency-icon">
+                  <i class="fas fa-battery-full"></i>
+                </div>
+                <div class="emergency-content">
+                  <h4>Sistema de Respaldo Inteligente</h4>
+                    <p>Respaldo automático durante cortes de luz</p>
+                    <p>Energía solar gratuita durante el día</p>
+                    <p>Batería de litio de larga duración</p>
+                    <p>Reduce dependencia de la red eléctrica</p>
+                    <br><br><br><br>
+                  
+                </div>
+              </div>
+            `
+                : ""
+            }
+            <div class="sistema-price">
+              <div class="price-item">
+                <span class="price-label">Inversión (Incluye instalación):</span>
+                <span class="price-value price-inversion">${formatearMoneda(sistema.price)}</span>
+              </div>
+              ${
+                roi !== null
+                  ? `
+                <div class="roi-container">
+                  <div class="roi-badge ${getBadgeClass(sistema.type)}">
+                    <i class="fas fa-chart-line"></i>
+                    Retorno de Inversión: ${roi} AÑOS
+                  </div>
+                </div>
+                `
+                  : ""
+              }
+            </div>
+            <button class="btn-cotizar" onclick="generarPDFSistema(${JSON.stringify(sistema).replace(/"/g, "&quot;")}, datosCalculados)">
+              <i class="fas fa-file-pdf"></i>
+              Generar Cotización PDF
+            </button>
+          </div>
+        </div>
+      `
+    })
+    .join("")
+
   elementos.sistemasRecomendados.style.display = "block"
 }
 
-// 🎨 FUNCIÓN PARA OBTENER CLASE DE BADGE
-function getBadgeClass(tipo) {
-  switch (tipo) {
-    case "ON GRID":
-      return "badge-on-grid"
-    case "OFF GRID":
-      return "badge-off-grid"
-    case "HIBRIDO":
-      return "badge-hibrido"
-    default:
-      return "badge-power-station"
+//  Agregando funciones para el modal de imagen de productos
+function abrirModalImagen(imagenUrl, nombreSistema) {
+  const modal = document.getElementById("modalImagen")
+  const modalImg = document.getElementById("imagenModal")
+  const caption = document.getElementById("captionModal")
+
+  modal.style.display = "block"
+  modalImg.src = imagenUrl
+  caption.textContent = nombreSistema
+
+  // Prevenir scroll del body cuando el modal está abierto
+  document.body.style.overflow = "hidden"
+}
+
+function cerrarModalImagen() {
+  const modal = document.getElementById("modalImagen")
+  modal.style.display = "none"
+
+  // Restaurar scroll del body
+  document.body.style.overflow = "auto"
+}
+
+// Cerrar modal al hacer clic fuera de la imagen
+window.onclick = (event) => {
+  const modal = document.getElementById("modalImagen")
+  if (event.target === modal) {
+    cerrarModalImagen()
   }
 }
 
-// 🔧 FUNCIÓN PARA OBTENER ICONO DEL SISTEMA
-function getSystemIcon(tipo) {
-  switch (tipo) {
-    case "ON GRID":
-      return '<i class="fas fa-sun"></i>'
-    case "OFF GRID":
-      return '<i class="fas fa-battery-full"></i>'
-    case "HIBRIDO":
-      return '<i class="fas fa-bolt"></i>'
-    default:
-      return '<i class="fas fa-plug"></i>'
-  }
-}
-
-function formatearNumero(valor, decimales = 2) {
+// Funciones auxiliares para formatear moneda y validar el formulario
+function formatearMoneda(valor) {
   return new Intl.NumberFormat("es-EC", {
-    minimumFractionDigits: decimales,
-    maximumFractionDigits: decimales,
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
   }).format(valor)
 }
 
-// 📤 FUNCIÓN PARA ENVIAR DATOS A POWER AUTOMATE
+function validarFormulario() {
+  const errores = []
+
+  if (!elementos.nombre.value.trim()) {
+    errores.push("Por favor, ingresa tu nombre.")
+  }
+
+  if (!elementos.celular.value.trim()) {
+    errores.push("Por favor, ingresa tu número de celular.")
+  }
+
+  if (!validarEmail(elementos.email.value.trim())) {
+    errores.push("Por favor, ingresa un email válido.")
+  }
+
+  if (!elementos.ciudad.value.trim()) {
+    errores.push("Por favor, ingresa tu ciudad.")
+  }
+
+  if (!elementos.consumoMensual.value.trim()) {
+    errores.push("Por favor, ingresa tu consumo mensual de energía.")
+  }
+
+  if (errores.length > 0) {
+    mostrarAlertas(errores)
+    return false
+  }
+
+  return true
+}
+
+function mostrarAlertas(errores) {
+  elementos.errorList.innerHTML = ""
+  errores.forEach((error) => {
+    const li = document.createElement("li")
+    li.textContent = error
+    elementos.errorList.appendChild(li)
+  })
+  elementos.errorAlert.style.display = "block"
+  setTimeout(() => {
+    elementos.errorAlert.style.display = "none"
+  }, 5000)
+}
+
 async function enviarDatosAPowerAutomate(datos) {
   try {
-    const payload = {
+    console.log("[v0] 🔍 Iniciando envío a Power Automate...")
+    console.log("[v0] 📊 Datos recibidos:", datos)
+
+    const registro = {
       fechaCalculo: new Date().toISOString(),
-      nombre: datos.nombre,
-      tipoCliente: datos.tipoCliente,
-      celular: datos.celular.toString(),
-      email: datos.email,
-      ciudad: datos.ciudad,
-      consumoMensual: Number.parseInt(datos.consumo),
-      consumoAnual: Number.parseInt(datos.consumoAnualSinSFV),
-      costoMensualActual: Number.parseFloat(datos.costoMensualSinSFV),
-      costoAnualActual: Number.parseInt(datos.costoAnualSinSFV),
-      tamanoSistema: datos.sistema.panels || 0,
-      precioInversion: Number.parseInt(datos.sistema.priceWithIVA || datos.sistema.price),
-      produccionAnual: Number.parseInt(datos.sistema.annualSavings || 0),
-      produccionMensual: Number.parseInt(datos.sistema.monthlySavings || 0),
-      cantidadPaneles: Number.parseInt(datos.sistema.panels || 0),
-      areaRequerida: Number.parseFloat(calculateArea(datos.sistema.panels || 0)),
-      nuevoConsumoMensual: Number.parseInt(datos.consumo),
-      nuevoCostoMensual: Number.parseFloat(datos.costoMensualSinSFV),
-      ahorroMensual: Number.parseFloat(datos.sistema.monthlySavings || 0),
-      ahorroAnual: Number.parseFloat(datos.sistema.annualSavings || 0),
-      ahorroAnualPorcentaje: 0,
-      tiempoRetorno: Number.parseFloat(datos.sistema.roi || 0),
+      nombre: String(datos.nombre || ""),
+      tipoCliente: String(datos.tipoCliente || ""),
+      celular: String(datos.celular || ""),
+      email: String(datos.email || ""),
+      ciudad: String(datos.ciudad || ""),
+      consumoMensual: Number.parseInt(datos.consumo) || 0,
+      consumoAnual: Number.parseInt(datos.consumoAnualSinSFV) || 0,
+      costoMensualActual: Number.parseFloat(datos.costoMensualSinSFV) || 0,
+      costoAnualActual: Number.parseInt(datos.costoAnualSinSFV) || 0, // Cambiado a integer
+      tamanoSistema: Number.parseFloat(datos.sistema.power) || 0, // Cambiado a number (kW del sistema)
+      precioInversion: Number.parseInt(datos.sistema.price) || 0, // Cambiado a integer
+      produccionAnual: Number.parseInt(datos.sistema.produccionAnual) || 0,
+      produccionMensual: Number.parseInt(datos.sistema.produccionMensual) || 0,
+      cantidadPaneles: Number.parseInt(datos.sistema.panels) || 0,
+      areaRequerida: Number.parseFloat(calculateArea(datos.sistema.panels)) || 0,
+      nuevoConsumoMensual: Number.parseInt(0),
+      nuevoCostoMensual: Number.parseFloat(0),
+      ahorroMensual: Number.parseFloat(0),
+      ahorroAnual: Number.parseFloat(0),
+      ahorroAnualPorcentaje: Number.parseFloat(0),
+      tiempoRetorno: Number.parseFloat(0),
     }
 
-    console.log("🔄 Enviando cálculo completo:", payload)
+    console.log("[v0] 📝 Registro preparado con tipos corregidos:", registro)
+    console.log("[v0] 🌐 URL de Power Automate:", POWER_AUTOMATE_URL)
 
     const response = await fetch(POWER_AUTOMATE_URL, {
       method: "POST",
@@ -1889,21 +2438,112 @@ async function enviarDatosAPowerAutomate(datos) {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(registro),
     })
 
+    console.log("[v0] 📡 Respuesta del servidor - Status:", response.status)
+    console.log("[v0] 📡 Respuesta del servidor - StatusText:", response.statusText)
+
     if (response.ok) {
-      console.log("✅ Cotización completa guardada exitosamente")
+      console.log("[v0] ✅ Datos enviados correctamente a Power Automate")
+      mostrarNotificacion("✅ Datos guardados correctamente en SharePoint", "success")
+      gtag("event", "form_submission", {
+        event_category: "Solar Calculator",
+        event_label: "Form Submission",
+        value: 1,
+      })
     } else {
       const errorText = await response.text()
-      console.error("❌ Error al guardar cálculo completo:", response.status, errorText)
+      console.error("[v0] ❌ Error del servidor:", response.status, response.statusText, errorText)
+      mostrarNotificacion(`❌ Error del servidor: ${response.status} - ${response.statusText}`, "error")
+      throw new Error(`Error ${response.status}: ${response.statusText} - ${errorText}`)
     }
   } catch (error) {
-    console.error("❌ Error general al enviar cálculo completo:", error)
+    console.error("[v0] ❌ Error detallado al enviar datos a Power Automate:", error)
+    console.error("[v0] 🔍 Tipo de error:", error.name)
+    console.error("[v0] 🔍 Mensaje de error:", error.message)
+
+    if (error.name === "TypeError" && error.message.includes("fetch")) {
+      mostrarNotificacion("❌ Error de conexión. Verifica tu conexión a internet.", "error")
+    } else if (error.name === "TypeError" && error.message.includes("CORS")) {
+      mostrarNotificacion("❌ Error de CORS. La URL de Power Automate puede necesitar actualización.", "error")
+    } else {
+      mostrarNotificacion("❌ Error al enviar datos. Revisa la consola para más detalles.", "error")
+    }
   }
 }
 
-// 🖼️ FUNCIONES DEL MODAL DE AYUDA
+// This function is already defined above, so it should not be redeclared.
+// async function guardarRegistroInmediato(nombre) {
+//   if (registroGuardado) {
+//     console.log("[v0] ⚠️ Registro ya guardado, saltando...")
+//     return
+//   }
+
+//   try {
+//     console.log("[v0] 🔄 Iniciando guardado automático para:", nombre)
+
+//     const registroInmediato = {
+//       fechaCalculo: new Date().toISOString(),
+//       nombre: nombre,
+//       tipoCliente: elementos.tipoCliente.value || "No especificado",
+//       celular: elementos.celular.value.trim() || "593000000000",
+//       email: elementos.email.value.trim() || "no-email@ejemplo.com",
+//       ciudad: elementos.ciudad.value.trim() || "No especificado",
+//       consumoMensual: Number.parseInt(elementos.consumoMensual.value) || 0,
+//       consumoAnual: 0,
+//       costoMensualActual: 0.0,
+//       costoAnualActual: 0,
+//       tamanoSistema: 0,
+//       precioInversion: 0,
+//       produccionAnual: 0,
+//       produccionMensual: 0,
+//       cantidadPaneles: 0,
+//        areaRequerida: 0.0,
+//       nuevoConsumoMensual: 0,
+//       nuevoCostoMensual: 0.0,
+//       ahorroMensual: 0.0,
+//       ahorroAnual: 0.0,
+//       ahorroAnualPorcentaje: 0.0,
+//       tiempoRetorno: 0.0,
+//     }
+
+//     console.log("[v0] 📝 Registro inmediato preparado:", registroInmediato)
+
+//     const response = await fetch(POWER_AUTOMATE_URL, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//       body: JSON.stringify(registroInmediato),
+//     })
+
+//     console.log("[v0] 📡 Respuesta guardado inmediato - Status:", response.status)
+
+//     if (response.ok) {
+//       registroGuardado = true
+//       console.log("[v0] ✅ LEAD CAPTURADO - Registro automático guardado:", nombre)
+//       gtag("event", "lead_captured", {
+//         event_category: "Solar Calculator",
+//         event_label: "Auto Save Name",
+//         value: 1,
+//       })
+//     } else {
+//       const errorText = await response.text()
+//       console.error("[v0] ❌ Error del servidor en guardado inmediato:", response.status, response.statusText, errorText)
+//       throw new Error(`Error ${response.status}: ${response.statusText} - ${errorText}`)
+//     }
+//   } catch (error) {
+//     console.error("[v0] ❌ Error detallado al guardar registro automático:", error)
+//     setTimeout(() => {
+//       console.log("[v0] 🔄 Reintentando guardado automático...")
+//       registroGuardado = false
+//       guardarRegistroInmediato(nombre)
+//     }, 3000)
+//   }
+// }
+
 function mostrarModalConsumo() {
   elementos.consumoModal.style.display = "block"
   document.body.style.overflow = "hidden"
@@ -1914,99 +2554,117 @@ function cerrarModalConsumo() {
   document.body.style.overflow = "auto"
 }
 
-function validarFormulario() {
-  const errores = []
+function updateBackupCalculations() {
+  let totalPower = 0
+  let totalEnergy = 0
 
-  if (!elementos.nombre.value.trim()) {
-    errores.push("El nombre del cliente es obligatorio")
-  }
+  selectedEquipment.forEach((equipment) => {
+    const power = equipment.quantity * equipment.product.w
+    const hours = equipment.hours
+    const energy = (power * hours) / 1000 // Convert to kWh
 
-  if (!elementos.tipoCliente.value) {
-    errores.push("Debe seleccionar el tipo de cliente")
-  }
-
-  const celular = elementos.celular.value.trim()
-  if (!celular) {
-    errores.push("El número celular es obligatorio")
-  } else if (!validarCelular(celular)) {
-    errores.push("El número celular debe tener 12 dígitos y empezar con 593 (ej: 593987654321)")
-  }
-
-  const email = elementos.email.value.trim()
-  if (!email) {
-    errores.push("El correo electrónico es obligatorio")
-  } else if (!validarEmail(email)) {
-    errores.push("El correo electrónico no tiene un formato válido")
-  }
-
-  if (!elementos.ciudad.value.trim()) {
-    errores.push("La ciudad es obligatoria")
-  }
-
-  const consumo = Number.parseFloat(elementos.consumoMensual.value)
-  if (!elementos.consumoMensual.value || isNaN(consumo) || consumo <= 0) {
-    errores.push("El consumo mensual debe ser mayor a 0")
-  }
-
-  if (errores.length > 0) {
-    mostrarErrores(errores)
-    return false
-  } else {
-    ocultarErrores()
-    return true
-  }
-}
-
-function mostrarErrores(errores) {
-  elementos.errorList.innerHTML = ""
-  errores.forEach((error) => {
-    const li = document.createElement("li")
-    li.textContent = error
-    elementos.errorList.appendChild(li)
+    totalPower += power
+    totalEnergy += energy
   })
-  elementos.errorAlert.style.display = "block"
-  elementos.errorAlert.scrollIntoView({ behavior: "smooth", block: "center" })
+
+  // Update totals display
+  document.getElementById("backupTotalPicos").textContent = Math.round(totalPower).toLocaleString()
+  document.getElementById("backupTotalEnergia").textContent = totalEnergy.toFixed(2)
+
+  // Get recommended systems considering both power and energy
+  const recommendedSystems = getRecommendedBackupSystems(totalPower / 1000, totalEnergy)
+
+  // Display recommended systems
+  displayRecommendedBackupSystems(recommendedSystems)
 }
 
-function ocultarErrores() {
-  elementos.errorAlert.style.display = "none"
-}
+function displayRecommendedBackupSystems(systems) {
+  const resultsGrid = document.getElementById("backupSistemasGrid")
+  const resultsSection = document.getElementById("backupRecommendedSection")
 
-function formatearMoneda(cantidad) {
-  return cantidad.toLocaleString("es-EC", { style: "currency", currency: "USD" })
-}
-
-// ========== MOBILE MENU FUNCTIONALITY ==========
-document.addEventListener("DOMContentLoaded", () => {
-  const mobileMenuBtn = document.getElementById("mobileMenuBtn")
-  const mobileMenu = document.getElementById("mobileMenu")
-
-  if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("active")
-      const icon = mobileMenuBtn.querySelector("i")
-      if (mobileMenu.classList.contains("active")) {
-        icon.className = "fas fa-times"
-      } else {
-        icon.className = "fas fa-bars"
-      }
-    })
-
-    const mobileLinks = mobileMenu.querySelectorAll("a")
-    mobileLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("active")
-        const icon = mobileMenuBtn.querySelector("i")
-        icon.className = "fas fa-bars"
-      })
-    })
-
-    document.addEventListener("click", (e) => {
-      if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.remove("active")
-        const icon = mobileMenuBtn.querySelector("i")
-        icon.className = "fas fa-bars"
-      }
-    })
+  if (systems.length > 0) {
+    resultsGrid.innerHTML = systems
+      .map(
+        (system) => `
+      <div class="backup-sistema-card">
+        <div class="backup-sistema-header">
+          <h4>${system.name}</h4>
+          <span class="backup-sistema-type">${system.type}</span>
+        </div>
+        <div class="backup-sistema-content">
+          <p class="backup-sistema-description">${system.description}</p>
+          <div class="backup-sistema-specs">
+            <div class="backup-spec">
+              <span class="backup-spec-label">Inversor:</span>
+              <span class="backup-spec-value">${system.inv_kW} kW</span>
+            </div>
+            <div class="backup-spec">
+              <span class="backup-spec-label">Batería:</span>
+              <span class="backup-spec-value">${system.batt_kWh} kWh</span>
+            </div>
+            <div class="backup-spec">
+              <span class="backup-spec-label">Rango de Potencia:</span>
+              <span class="backup-spec-value">${system.potenciaMinima} - ${system.potenciaMaxima} kW</span>
+            </div>
+            <div class="backup-spec">
+              <span class="backup-spec-label">Máx. Baterías:</span>
+              <span class="backup-spec-value">${system.maxBaterias}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+      )
+      .join("")
+    resultsSection.style.display = "block"
+  } else {
+    resultsGrid.innerHTML = `
+      <div class="backup-no-systems">
+        <p>No se encontraron sistemas recomendados para tus necesidades.</p>
+        <p>Por favor, contacta a nuestro equipo técnico para una solución personalizada.</p>
+      </div>
+    `
+    resultsSection.style.display = "block"
   }
-})
+}
+
+function exportBackupToCSV() {
+  if (selectedEquipment.length === 0) {
+    alert("No hay equipos para exportar")
+    return
+  }
+
+  let csvContent = "Equipo,Potencia (W),Cantidad,Horas,Picos (W),Energia (kWh)\n"
+
+  selectedEquipment.forEach((equipment) => {
+    const quantity = equipment.quantity
+    const hours = equipment.hours
+    const product = equipment.product
+
+    const potenciaTotal = quantity * product.w
+    const picos = potenciaTotal * product.fc
+
+    let energia
+    if (equipment.product.fcoinc > 0) {
+      energia = (equipment.product.fcoinc * hours * picos) / 1000
+    } else {
+      energia = (hours * picos) / 1000
+    }
+
+    csvContent += `"${product.name}",${product.w},${quantity},${hours},"${Math.round(picos).toLocaleString()}","${energia.toFixed(2)}"\n`
+  })
+
+  const totalPicos = document.getElementById("backupTotalPicos").textContent
+  const totalEnergia = document.getElementById("backupTotalEnergia").textContent
+  csvContent += `"TOTALES",,,,"${totalPicos}","${totalEnergia}"\n`
+
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
+  const link = document.createElement("a")
+  const url = URL.createObjectURL(blob)
+  link.setAttribute("href", url)
+  link.setAttribute("download", "respaldo_equipos.csv")
+  link.style.visibility = "hidden"
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
