@@ -2046,7 +2046,7 @@ async function calcularAhorro() {
   const sistemaRecomendado = sistemasRecomendados[0] // El primer sistema es el principal
 
   if (!sistemaRecomendado) {
-    alert("No se encontraron sistemas para este rango de consumo")
+    alert("No se encontraron sistemas para este rango de consumo contacta un asesor de ventas https://wa.me/$593959613385")
     return
   }
 
