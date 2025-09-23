@@ -2045,15 +2045,10 @@ async function calcularAhorro() {
   const sistemasRecomendados = getRecommendedSystems(consumo)
   const sistemaRecomendado = sistemasRecomendados[0] // El primer sistema es el principal
 
-  //if (!sistemaRecomendado) {
-   // alert("No se encontraron sistemas para este rango de consumo contacta un asesor de ventas +593959613385")
-  //  return
-  //}
-
   if (!sistemaRecomendado) {
-  alert("No se encontraron sistemas disponibles para este rango de consumo.\nPor favor contacte a un asesor de ventas al https://wa.me/593994705163");
-  return;
-}
+    alert("No se encontraron sistemas para este rango de consumo contacta un asesor de ventas +593959613385")
+    return
+  }
 
   // Cálculos básicos
   const costoMensualSinSFV = calcularCostoProgresivo(consumo)
